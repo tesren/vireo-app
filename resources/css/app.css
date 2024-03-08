@@ -1,0 +1,155 @@
+@import url('/resources/css/bootstrap.min.css');
+@import url('/resources/css/all.min.css');
+
+
+:root{
+    --sand: #EEEAE0;
+    --green : #5B5942;
+    --blue: #AEB6BF;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Forum', serif !important;
+    letter-spacing: 5px;
+}
+
+body{
+    background-color: var(--sand);
+    color: var(--green);
+    font-family: 'IBM Plex Sans', serif;
+}
+
+.mt-6{
+    margin-top: 6rem !important;
+}
+
+.mb-6{
+    margin-bottom: 6rem !important;
+}
+
+.my-6{
+    margin-top: 6rem !important;
+    margin-bottom: 6rem !important;
+}
+
+.fondo-oscuro{
+    background-color: rgba(91, 89, 66, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.fs-0{
+    font-size: 70px;
+}
+
+.fs-0{
+    font-size: 70px;
+}
+
+.fs-7{
+    font-size: 14px;
+}
+
+.row{
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.fs-7{
+    font-size: 14px;
+}
+
+.row{
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.text-sand{
+    color: var(--sand);
+}
+
+.btn{
+    font-family: 'Forum', serif !important; 
+}
+
+.btn-sand{
+    color: var(--green);
+    background-color: var(--sand);
+}
+
+.btn-sand:hover{
+    color: var(--green);
+    background-color: #c6c3bb;
+    transition: 0.3s;
+}
+
+.btn-blue{
+    background-color: var(--blue);
+    color: white;
+}
+
+.btn-blue:hover{
+    background-color: #919ead;
+    color: white;
+    transition: 0.3s;
+}
+
+.bg-green{
+    background-color: var(--green);
+    color: var(--sand);
+}
+
+.shadow-4 {
+    box-shadow: 0 2px 4px -1px #0003,0 4px 5px #00000024,0 1px 10px #0000001f;
+}
+
+.shadow-7 {
+    box-shadow: 0 4px 5px -2px #0003,0 7px 10px 1px #00000024,0 2px 16px 1px #0000001f;
+}
+
+#whatsapp{
+    right:20px; 
+    bottom:20px; 
+    width:60px; 
+    height:60px; 
+    font-size:45px;
+    background-color: var(--blue);
+    transition: 0.2s;
+}
+
+#whatsapp:hover{
+    background-color: #25d366;
+    transition: 0.3s;
+}
+
+.contact-input{
+    
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--green);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid var(--green);
+    border-radius: 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.carousel-caption {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
