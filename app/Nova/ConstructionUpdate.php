@@ -2,38 +2,38 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Panel;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\URL;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
-class User extends Resource
+class ConstructionUpdate extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\User>
-     */
-    public static $model = \App\Models\User::class;
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
      * @var string
      */
-    public static $title = 'name';
+    public static $model = \App\Models\ConstructionUpdate::class;
 
     /**
-     * The columns that should be searched.
+     * Get the value that should be displayed to represent the resource.
      *
-     * @var array
+     * @return string
      */
-    public static $search = [
-        'name', 'email',
-    ];
+    public function title()
+    {
+        $date = $this->date;
+
+        $date = date_format($date, 'M Y');
+
+        return $date;
+    }
 
     /**
      * Get the displayable singular label of the resource.
@@ -42,13 +42,22 @@ class User extends Resource
      */
     public static function singularLabel()
     {
-        return __('Usuario');
+        return __('Avance de obra');
     }
 
     public static function label()
     {
-        return __('Usuarios');
+        return __('Avances de obra');
     }
+
+    /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = [
+        'id',
+    ];
 
     /**
      * Get the fields displayed by the resource.
@@ -60,24 +69,23 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
+            Date::make('Fecha del Avance', 'date')->required()->sortable(),
+            Text::make('Descripción', 'description')->help('Pequeña descripción de lo que se hizo en la obra de construcción')->nullable(),
+            Text::make('Description', 'description_en')->help('Pequeña descripción de lo que se hizo en la obra de construcción en INGLÉS')->nullable(),
 
-            Gravatar::make()->maxWidth(50),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
+            new Panel('Imágenes y Video', $this->imageFields()),
         ];
+    }
+
+    protected function imageFields() {
+
+        return [
+            Image::make('Portada', 'portrait_path')->hideFromIndex()->creationRules('required')->disk('media'),
+            URL::make('Video Youtube', 'video_link')->help('Pega el link del video de Youtube')->displayUsing(fn () => "Ver Video"),
+
+            Images::make('Galería', 'gallery_construction')->hideFromIndex()->enableExistingMedia(),
+        ];
+
     }
 
     /**

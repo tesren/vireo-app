@@ -33,7 +33,7 @@ body{
 }
 
 .fondo-oscuro{
-    background-color: rgba(91, 89, 66, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 0;
     left: 0;
@@ -44,20 +44,6 @@ body{
 
 .fs-0{
     font-size: 70px;
-}
-
-.fs-0{
-    font-size: 70px;
-}
-
-.fs-7{
-    font-size: 14px;
-}
-
-.row{
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
 }
 
 .fs-7{
@@ -152,4 +138,9 @@ body{
 
 .carousel-caption {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.bg-blurred{
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }

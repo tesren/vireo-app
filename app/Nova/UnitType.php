@@ -2,52 +2,56 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Panel;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
-class User extends Resource
+class UnitType extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\User>
+     * @var class-string<\App\Models\UnitType>
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\UnitType::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
-
+    public function title(){
+        return $this->name;
+    }
     /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'name', 'email',
+        'name',
     ];
 
-    /**
+
+     /**
      * Get the displayable singular label of the resource.
      *
      * @return string
      */
     public static function singularLabel()
     {
-        return __('Usuario');
+        return __('Tipo de Unidad');
     }
 
     public static function label()
     {
-        return __('Usuarios');
+        return __('Tipos de Unidades');
     }
 
     /**
@@ -61,24 +65,34 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
+            Text::make('Nombre', 'name')->rules('required', 'max:50')->sortable(),
 
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            Number::make('Recámaras', 'bedrooms')->rules('required')->min(0)->max(15)->help('Dejar en 0 si es Loft o Studio')->sortable(),
+            Number::make('Cuartos Flex', 'flexrooms')->rules('nullable')->min(0)->max(15)->sortable(),
+            Number::make('Baños', 'bathrooms')->rules('required')->min(0)->max(15)->step(0.5)->sortable(),
 
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+            Select::make('Tipo', 'property_type')->options([
+                'Condominio' => 'Condominio',
+                'Villa' => 'Villa',
+            ])->rules('required')->sortable()->filterable(),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
+            new Panel('Imágenes', $this->imageFields()),
         ];
     }
+
+
+    protected function imageFields() {
+
+        return [
+            Image::make('Planos', 'blueprint_path')->disk('media')/*->creationRules('required')*/,
+            //Images::make('Isométrico', 'isometric')->hideFromIndex()/*->rules('required')*/->enableExistingMedia(),
+            Images::make('Galería', 'gallery')->hideFromIndex()/*->rules('required')*/->enableExistingMedia(),
+            //Images::make('Ubicación en planta', 'floor')->hideFromIndex()/*->rules('required')*/->enableExistingMedia(),
+
+        ];
+
+    }
+
 
     /**
      * Get the cards available for the request.
