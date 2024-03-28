@@ -49,7 +49,7 @@
       <div class="col-12 col-lg-10 col-xxl-7 text-center">
 
           <h2 class="fs-1 mb-2">Amenidades</h2>
-          <p class="fs-6 mb-4 mb-lg-5 fw-light">Disfruta de las amenidades exclusivas, que incluyen terraza pergolada, alberca de adultos y niños, pista de jogging, área de coworking y lobby.</p>
+          <p class="fs-6 mb-4 mb-lg-5 fw-light">Disfruta de las amenidades exclusivas, que incluyen terraza pergolada, alberca de adultos y niños, pista de jogging, golf lounge y lobby.</p>
 
           <div id="carouselExampleIndicators" class="carousel slide shadow-4">
               <div class="carousel-indicators">
@@ -83,9 +83,9 @@
                 </div>
 
                 <div class="carousel-item">
-                  <img src="{{asset('/img/coworking-area.webp')}}" class="d-block w-100" alt="Área de Coworking Virēo Living" loading="lazy">
+                  <img src="{{asset('/img/coworking-area.webp')}}" class="d-block w-100" alt="Golf Lounge Virēo Living" loading="lazy">
                   <div class="carousel-caption">
-                      <h3>Área de Coworking</h3>
+                      <h3>Golf Lounge</h3>
                   </div>
                 </div>
 

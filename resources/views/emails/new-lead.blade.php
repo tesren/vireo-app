@@ -6,12 +6,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Mensaje del sitio web de Caza Mabó</title>
+        <title>Mensaje del sitio web de Virēo Living</title>
     </head>
 
     <body>
         <p>
-            Contacto recibido del sitio web de Caza Mabó
+            Contacto recibido del sitio web de Virēo Living
             @if( isset($msg->contact_pref) ) Esta persona esta interesada en agendar una cita. @endif
             @if( isset($msg->unit) ) <br> Esta persona descargó una cotización de la unidad {{$msg->unit->name}} con el plan de pagos {{$msg->plan->name}}. @endif
         </p>
@@ -34,11 +34,11 @@
         <p>Desde: {{$msg->url}}</p>
     
         @if ( isset($msg->contact_pref) )
-            <p>Este mensaje fue enviado desde la landing page de agendar cita en cazamabosayulita.com</p>
+            <p>Este mensaje fue enviado desde la landing page de agendar cita en vireo.mx</p>
         @elseif (isset($msg->unit))
-            <p>Este mensaje fue enviado desde la landing page de cotizar en cazamabosayulita.com</p>
+            <p>Este mensaje fue enviado desde la landing page de cotizar en vireo.mx</p>
         @else
-            <p>Este mensaje fue enviado desde un formulario de contacto en cazamabosayulita.com</p>
+            <p>Este mensaje fue enviado desde un formulario de contacto en vireo.mx</p>
         @endif
     
     </body>

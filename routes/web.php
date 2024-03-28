@@ -19,4 +19,8 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/landing', function () {
+    return view('landing-page');
+})->name('landing');
+
 Route::post('/send-message', [ PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);

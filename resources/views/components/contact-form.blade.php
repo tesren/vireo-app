@@ -6,7 +6,7 @@
         <p class="fs-6 text-lightbrown px-2 mb-4 text-center">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
 
         {{-- Formulario --}}
-        <form action="{{route('send.email')}}#contact" method="post" onsubmit="disableBtn()">
+        <form action="{{route('send.email')}}#contact" method="post" id="contact_form">
             @csrf
         
             <div class="row">
@@ -65,11 +65,27 @@
 
         {{-- Javascript --}}
         <script>
-            function disableBtn(){
+
+            const form = document.getElementById('contact_form');
+
+            form.addEventListener('submit', function(event) {
                 const msgButton = document.getElementById("submit-btn");
                 msgButton.setAttribute("disabled", "true");
-            }
+            });
+
+            
         </script>
+
+        @if (session('message'))
+            <!-- Event snippet for Contactó por formulario conversion page -->
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+
+                gtag('event', 'conversion', {'send_to': 'AW-996157886/4nfiCIH4i-sYEL7TgNsD'});
+            </script>
+        @endif
+        
 
     </div>
 
