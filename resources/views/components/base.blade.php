@@ -38,6 +38,8 @@
         
         @yield('content')
 
+        @include('components.footer')
+
         @vite(['resources/js/app.js'])
 
     </body>

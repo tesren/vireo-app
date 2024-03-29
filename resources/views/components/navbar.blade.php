@@ -20,11 +20,11 @@
 
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-            <li class="nav-item">
+            <li class="nav-item me-0 me-lg-5">
               <a class="nav-link" href="{{route('home')}}">{{__('Inicio')}}</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown me-0 me-lg-5">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{__('Inventario')}}
               </a>
@@ -38,7 +38,7 @@
               </ul>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item me-0 me-lg-5">
                 <a class="nav-link" href="#">{{__('Avance de Obra')}}</a>
             </li>
 

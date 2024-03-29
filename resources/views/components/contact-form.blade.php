@@ -1,9 +1,13 @@
 <section class="row justify-content-center" title="Formulario de contacto" id="contact">
 
-    <div class="col-12 col-lg-5 align-self-center mt-4 mt-lg-0">
+    <div class="col-12 col-lg-5 d-none d-lg-block px-0">
+        <img src="{{asset('img/villa-interior-exterior.webp')}}" alt="Terraza de las Villas en Vireo Living" class="w-100" style="height: 70vh; object-fit:cover;">
+    </div>
 
-        <h6 class="fs-2 text-brown px-2 mb-0 text-center">{{__('¿Te gustaría saber más?')}}</h6>
-        <p class="fs-6 text-lightbrown px-2 mb-4 text-center">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
+    <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5">
+
+        <h6 class="fs-2 text-brown px-2 mb-0 text-center text-lg-start">{{__('¿Te gustaría saber más?')}}</h6>
+        <p class="fs-6 text-lightbrown px-2 mb-4 text-center text-lg-start">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
 
         {{-- Formulario --}}
         <form action="{{route('send.email')}}#contact" method="post" id="contact_form">
