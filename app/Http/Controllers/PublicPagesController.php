@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use App\Mail\NewLead;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -111,5 +112,101 @@ class PublicPagesController extends Controller
             
             return redirect()->back()->with('message', 'Gracias, su mensaje ha sido enviado');
         }    
+    }
+
+    public function inventory(){
+
+        $units = Unit::orderBy('price', 'asc')->paginate(12)->appends(request()->query());
+
+        return view('inventory', compact('units'));
+    }
+
+    public function condos(){
+
+        $units = Unit::whereIn('unit_type_id', [1,2,4])->orderBy('price', 'asc')->paginate(12)->appends(request()->query());
+
+        return view('inventory', compact('units'));
+    }
+
+    public function villas(){
+
+        $units = Unit::where('unit_type_id', 3)->orderBy('price', 'asc')->paginate(12)->appends(request()->query());
+
+        return view('inventory', compact('units'));
+    }
+
+    public function unit($property_type, $name){
+
+        $unit = Unit::where('name', $name)->first();
+
+        return view('unit', compact('unit'));
+    }
+
+    public function search(Request $request){
+
+        $min_price = $request->input('min_price');
+        $max_price = $request->input('max_price');
+        $bedrooms = $request->input('bedrooms');
+        $property_type = $request->input('property_type');
+
+        if( !isset($min_price) or empty($min_price) ){
+            $min_price = 0;
+        }
+
+        if( !isset($max_price) or empty($max_price) ){
+            $max_price = 999999999;
+        }
+
+        $units = Unit::where('price', '>', $min_price)->where('price', '<', $max_price);
+
+        if( isset($bedrooms) and !empty($bedrooms) ){
+            switch ($bedrooms) {
+                case 1:
+                    $type_ids = [4];
+                    break;
+
+                case 2:
+                    $type_ids = [1];
+                    break;
+
+                case 3:
+                    $type_ids = [2];
+                    break;
+
+                case 4:
+                    $type_ids = [3];
+                    break;
+                
+                default:
+                    $type_ids = [1,2,3,4];
+                    break;
+            }
+
+            $units = $units->whereIn('unit_type_id', $type_ids);
+        }
+
+        if( isset($property_type) and !empty($property_type) ){
+            switch ($property_type) {
+                case 'Villa':
+                    $ptype_ids = [3];
+                    break;
+
+                case 'Condominio':
+                    $ptype_ids = [1,2,4];
+                    break;
+                
+                default:
+                    $ptype_ids = [1,2,3,4];
+                    break;
+            }
+
+            $units = $units->whereIn('unit_type_id', $ptype_ids);
+        }
+
+        $units = $units->orderBy('price', 'asc')->paginate(12)->appends(request()->query());
+
+        $request->flash();
+
+        return view('inventory', compact('units'));
     }
 }

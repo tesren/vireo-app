@@ -40,6 +40,8 @@
 
         @include('components.footer')
 
+        @include('components.whatsapp-btn')
+
         @vite(['resources/js/app.js'])
 
     </body>

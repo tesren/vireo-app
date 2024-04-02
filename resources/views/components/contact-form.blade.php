@@ -1,7 +1,7 @@
 <section class="row justify-content-center" title="Formulario de contacto" id="contact">
 
     <div class="col-12 col-lg-5 d-none d-lg-block px-0">
-        <img src="{{asset('img/villa-interior-exterior.webp')}}" alt="Terraza de las Villas en Vireo Living" class="w-100" style="height: 70vh; object-fit:cover;">
+        <img src="{{asset('img/villa-interior-exterior.webp')}}" alt="Terraza de las Villas en Virēo Living" class="w-100" style="height: 70vh; object-fit:cover;">
     </div>
 
     <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5">
@@ -39,7 +39,7 @@
                 <input type="hidden" name="url" id="url" value="{{ request()->fullUrl() }}">
 
                 <div class="col-12 mb-5">
-                    <button type="submit" id="submit-btn" class="btn btn-blue rounded-0 shadow-4 w-100" @if(session('message')) disabled @endif>
+                    <button type="submit" id="submit-btn" class="btn btn-green rounded-0 shadow-4 w-100" @if(session('message')) disabled @endif>
                         {{__('Enviar')}}
                     </button>
                 </div>

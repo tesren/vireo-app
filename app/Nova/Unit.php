@@ -75,6 +75,11 @@ class Unit extends Resource
 
             BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable(),
 
+            Select::make('Torre', 'tower_name')->options([
+                'A' => 'A',
+                'B' => 'B',
+            ])->rules('required')->sortable()->filterable(),
+
             Number::make('Piso', 'floor')->rules('required')->min(0)->max(35)->sortable(),
 
             Number::make('Precio', 'price')->rules('required')->min(0)->step(0.01)->sortable()

@@ -86,7 +86,22 @@ class UnitType extends Resource
         return [
             Image::make('Planos', 'blueprint_path')->disk('media')/*->creationRules('required')*/,
             //Images::make('Isométrico', 'isometric')->hideFromIndex()/*->rules('required')*/->enableExistingMedia(),
-            Images::make('Galería', 'gallery')->hideFromIndex()/*->rules('required')*/->enableExistingMedia(),
+            Images::make('Galería', 'gallery')->hideFromIndex()/*->rules('required')*/->enableExistingMedia()->showStatistics()
+            ->singleImageRules('dimensions:max_width=2000, max:2048')
+            ->setFileName(function($originalFilename, $extension, $model){
+
+                // Eliminar caracteres especiales y acentos
+                $limpio = preg_replace('/[^A-Za-z0-9\-]/', '', strtr(utf8_decode($originalFilename), utf8_decode('áéíóúüñÁÉÍÓÚÜÑ'), 'aeiouunAEIOUUN'));
+
+                // Reemplazar espacios por guiones
+                $limpio = str_replace(' ', '-', $limpio);
+
+                // Convertir a minúsculas
+                $limpio = strtolower($limpio);
+                
+                return $limpio . '.' . $extension;
+
+            }),
             //Images::make('Ubicación en planta', 'floor')->hideFromIndex()/*->rules('required')*/->enableExistingMedia(),
 
         ];

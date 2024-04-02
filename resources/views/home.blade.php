@@ -30,22 +30,22 @@
   <img src="{{asset('img/details.svg')}}" alt="" class="w-100 d-none d-lg-block" style="height: 100px; object-fit:cover;">
 
   {{-- descripcion --}}
-  <div class="row justify-content-evenly mb-6 bg-green py-5 mt-5 mt-lg-0">
+  <section class="row justify-content-evenly mb-6 bg-green py-5 mt-5 mt-lg-0">
 
     <div class="col-12 col-lg-5 align-self-center mb-4 mb-lg-0 text-center text-lg-start">
       <h2 class="fs-2">{{__('Sobre el Proyecto')}}</h2>
-      <p>{{__('Descubre un estilo de vida privilegiado en Nuevo Vallarta, Nayarit, con la preventa exclusiva de Virēo Living, ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club.  Condominios de una, dos y tres recámaras y Villas de cuatro recámaras, Virēo Living ofrece opciones para todos los gustos y necesidades.')}}</p>
+      <p>{{__('Descubre un estilo de vida privilegiado en Nuevo Vallarta, Nayarit, con la preventa exclusiva de Virēo Living, ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club.Condominios de una, dos y tres recámaras y Villas de cuatro recámaras, Virēo Living ofrece opciones para todos los gustos y necesidades.')}}</p>
       <a href="#" class="btn btn-sand fs-5 rounded-0 shadow-7">{{__('Ver Inventario')}}</a>    
     </div>
 
     <div class="col-12 col-lg-5">
-      <img src="{{asset('img/interiors-home.webp')}}" alt="Interiores de Vireo Living ElTigre" class="w-100 shadow-7">
+      <img src="{{asset('img/interiors-home.webp')}}" alt="Interiores de Virēo Living ElTigre" class="w-100 shadow-7">
     </div>
 
-  </div>
+  </section>
 
   {{-- Amenidades --}}
-  <div class="row position-relative mb-0">
+  <section class="row position-relative mb-0">
 
     <h2 class="position-absolute w-auto top-50 start-50 text-green bg-sand py-1 px-3 rounded-0 z-3" style="transform: translateX(-50%) translateY(-50%);">
       {{__('Amenidades')}}
@@ -54,7 +54,7 @@
     <div class="fondo-oscuro-sutil"></div>
 
     <div class="col-6 col-lg-7 px-0 position-relative">
-      <img src="{{asset('/img/amenities-pool.webp')}}" alt="Alberca de Vireo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('/img/amenities-pool.webp')}}" alt="Alberca de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
       <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
         <p class="fs-4 mb-0">{{__('Alberca')}}</p>
@@ -63,7 +63,7 @@
     </div>
 
     <div class="col-6 col-lg-5 px-0 position-relative">
-      <img src="{{asset('/img/amenities-jogging.webp')}}" alt="Pista de Jogging de Vireo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('/img/amenities-jogging.webp')}}" alt="Pista de Jogging de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
       <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
         <p class="fs-4 mb-0">{{__('Pista de Jogging')}}</p>
@@ -72,7 +72,7 @@
     </div>
 
     <div class="col-6 col-lg-5 px-0 position-relative">
-      <img src="{{asset('img/amenities-golf-lounge.webp')}}" alt="Golf Lounge en Vireo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('img/amenities-golf-lounge.webp')}}" alt="Golf Lounge en Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
       <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
         <p class="fs-4 mb-0">{{__('Golf Lounge')}}</p>
@@ -81,7 +81,7 @@
     </div>
 
     <div class="col-6 col-lg-7 px-0 position-relative">
-      <img src="{{asset('img/amenities-lobby.webp')}}" alt="Lobby de Vireo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('img/amenities-lobby.webp')}}" alt="Lobby de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
       <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
         <p class="fs-4 mb-0">{{__('Lobby Principal')}}</p>
@@ -89,12 +89,12 @@
       </div>
     </div>
 
-  </div>
+  </section>
 
   <img src="{{asset('img/bg-leaf.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;">
 
   {{-- Interiores --}}
-  <div class="row justify-content-center justify-content-lg-start mb-0 text-center text-lg-start bg-green">
+  <section class="row justify-content-center justify-content-lg-start mb-0 text-center text-lg-start bg-green">
     <div class="col-12 col-lg-7 mb-4 mb-lg-0">
       <div id="carouselExampleCaptions" class="carousel slide">
 
@@ -153,12 +153,12 @@
       <p class="fw-light mb-4">{{__('Además, con superficies que van desde 84.38 m² hasta 455 m², encontrarás el espacio perfecto para ti y tu familia.')}} </p>
       <a href="#contact" class="btn btn-sand shadow-4 rounded-0 fs-5">{{__('Contacta un asesor')}}</a>
     </div>
-  </div>
+  </section>
 
   <img src="{{asset('img/bg-leaf-2.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;">
 
   {{-- Ubicacion --}}
-  <div class="row justify-content-center bg-green">
+  <section class="row justify-content-center bg-green">
 
     <div class="col-12 col-lg-5 align-self-center px-2 px-lg-5">
       <h4 class="fs-1 text-center text-lg-start">{{__('Ubicación')}}</h4>
@@ -173,7 +173,7 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7464.3161031868585!2d-105.29469164486922!3d20.703805580865442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842146962726718f%3A0x64401401488f6019!2sP.%C2%BA%20de%20las%20Garzas%20290%2C%20El%20Tigre%2C%2063735%20Nuevo%20Vallarta%2C%20Nay.!5e0!3m2!1ses-419!2smx!4v1709924622735!5m2!1ses-419!2smx" width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
     </div>
 
-  </div>
+  </section>
 
   {{-- Formulario --}}
   @include('components.contact-form')

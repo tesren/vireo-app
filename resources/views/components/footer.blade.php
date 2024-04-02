@@ -3,7 +3,7 @@
     <div class="row justify-content-evenly">
 
         <div class="col-8 col-lg-3 col-xxl-2">
-            <img src="{{asset('img/vireo-bone-color.svg')}}" alt="Logo de Vireo Living" class="w-100">
+            <img src="{{asset('img/vireo-bone-color.svg')}}" alt="Logo de Virēo Living" class="w-100">
         </div>
 
         <div class="col-11 col-lg-3 align-self-center">

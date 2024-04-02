@@ -23,4 +23,10 @@ Route::get('/landing', function () {
     return view('landing-page');
 })->name('landing');
 
+Route::get('/condominios-y-villas-en-venta', [PublicPagesController::class, 'inventory'])->name('inventory');
+Route::get('/condominios-en-venta', [PublicPagesController::class, 'condos'])->name('condos');
+Route::get('/villas-en-venta', [PublicPagesController::class, 'villas'])->name('villas');
+Route::get('/propiedad-en-venta-en-el-tigre/{property_type}-{name}', [PublicPagesController::class, 'unit'])->name('unit');
+Route::get('/busqueda', [PublicPagesController::class, 'search'])->name('search');
+
 Route::post('/send-message', [ PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);

@@ -2,7 +2,7 @@
     <div class="container-fluid px-2 px-lg-5">
 
       <a class="navbar-brand" href="{{route('home')}}">
-        <img width="180px" src="{{asset('/img/vire-logo-nav.webp')}}" alt="Logo de Vireo Living - El Tigre">
+        <img width="180px" src="{{asset('/img/vire-logo-nav.webp')}}" alt="Logo de Virēo Living - El Tigre">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -29,12 +29,12 @@
                 {{__('Inventario')}}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">{{__('Condominios')}}</a></li>
-                <li><a class="dropdown-item" href="#">{{__('Villas')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('condos')}}">{{__('Condominios')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('villas')}}">{{__('Villas')}}</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">{{__('Ver todo')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('inventory')}}">{{__('Ver todo')}}</a></li>
               </ul>
             </li>
 

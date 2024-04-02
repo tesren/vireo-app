@@ -71,6 +71,10 @@ body{
     color: var(--sand);
 }
 
+.text-green{
+    color: var(--green) !important;
+}
+
 .bg-blue{
     background-color: var(--blue);
     color: white;
@@ -78,6 +82,12 @@ body{
 
 .sand-hr{
     color: var(--sand);
+    opacity: 1;
+    height: 3px;
+}
+
+.green-hr{
+    color: var(--green);
     opacity: 1;
     height: 3px;
 }
@@ -94,6 +104,17 @@ body{
 .btn-sand:hover{
     color: var(--green);
     background-color: #c6c3bb;
+    transition: 0.3s;
+}
+
+.btn-green{
+    color: var(--sand);
+    background-color: var(--green);
+}
+
+.btn-green:hover{
+    color: var(--sand);
+    background-color: #434130;
     transition: 0.3s;
 }
 
@@ -136,7 +157,7 @@ body{
     width:60px; 
     height:60px; 
     font-size:45px;
-    background-color: var(--blue);
+    background-color: var(--green);
     transition: 0.2s;
 }
 
@@ -181,4 +202,24 @@ body{
     color: white !important;
     font-weight: 300;
     letter-spacing: 1px;
+}
+
+.border-sand {
+    border: 1px solid var(--sand)
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: var(--sand);
+    background-color: var(--green);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--sand);
+    background-color: var(--green);
+    box-shadow: 0 2px 4px -1px #0003,0 4px 5px #00000024,0 1px 10px #0000001f;
+}
+
+.nav-pills .nav-link {
+    color: var(--green);
+    background-color: var(--sand);
 }
