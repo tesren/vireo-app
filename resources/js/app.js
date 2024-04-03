@@ -1,7 +1,11 @@
 import './bootstrap';
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+Fancybox.bind("[data-fancybox]", {
+    // Your custom options
+});
+  
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
 document.addEventListener("DOMContentLoaded", function() {
     var whatsappLink = document.getElementById('whatsapp');

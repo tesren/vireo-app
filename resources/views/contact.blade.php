@@ -1,13 +1,37 @@
-<section class="row justify-content-center" title="Formulario de contacto" id="contact">
+@extends('components.base')
 
-    <div class="col-12 col-lg-5 d-none d-lg-block px-0">
-        <img src="{{asset('img/villa-interior-exterior.webp')}}" alt="Terraza de las Villas en Virēo Living" class="w-100" style="height: 70vh; object-fit:cover;">
+@section('titles')
+    <title>Virēo Living - {{__('Contacto')}}</title>
+    <meta name="description" content="{{__('Contacta a nuestro equipo de asesores de ventas en Virēo Living en Nuevo Vallarta, Nayarit. Completa nuestro formulario de contacto y recibe asistencia personalizada para encontrar la propiedad ideal para ti. Descubre un estilo de vida exclusivo frente al campo de golf El Tigre Golf & Country Club. ¡Contáctanos hoy y haz realidad tu sueño de vivir en Nuevo Vallarta!')}}">
+@endsection
+
+@section('content')
+
+{{-- Inicio --}}
+<div class="position-relative mb-6">
+        
+    <img src="{{asset('img/lobby-principal.webp')}}" alt="Ingreso principal de Virēo Living" class="w-100" style="height: 45vh; object-fit:cover;">
+
+    <div class="fondo-oscuro"></div>
+
+    <div class="row justify-content-center position-absolute top-0 left-0 h-100 z-3">
+        <div class="col-11 col-lg-10 col-xl-8 text-center text-sand align-self-center mt-6">
+
+            <h1 class="fs-1 text-decoration-underline">
+                {{__('Contacto')}}
+            </h1>
+            
+        </div>
     </div>
 
-    <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5 py-5 py-lg-0">
+</div>
 
-        <h6 class="fs-2 text-brown px-2 mb-0 text-center text-lg-start">{{__('¿Te gustaría saber más?')}}</h6>
-        <p class="fs-6 text-lightbrown px-2 mb-4 text-center text-lg-start">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
+<div class="row justify-content-center mb-6">
+
+    <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5">
+
+        <h2 class="fs-2 text-brown px-2 mb-0 text-center">{{__('¿Te gustaría saber más?')}}</h2>
+        <p class="fs-6 text-lightbrown px-2 mb-4 text-center">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
 
         {{-- Formulario --}}
         <form action="{{route('send.email')}}#contact" method="post" id="contact_form">
@@ -69,33 +93,30 @@
 
         {{-- Javascript --}}
         <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
 
             const form = document.getElementById('contact_form');
-            const form_btn = document.getElementById('submit-btn');
 
-            // form.addEventListener('submit', function(event) {
-            //     const msgButton = document.getElementById("submit-btn");
-            //     msgButton.setAttribute("disabled", "true");
-            // });
-
-            form_btn.addEventListener('click', function(event) {
-                gtag('event', 'conversion', {'send_to': 'AW-996157886/K-h5CMT4i6MZEL7TgNsD'});
-                form_btn.setAttribute("disabled", "true");
-                form.submit();
+            form.addEventListener('submit', function(event) {
+                const msgButton = document.getElementById("submit-btn");
+                msgButton.setAttribute("disabled", "true");
             });
+
             
         </script>
 
         @if (session('message'))
             <!-- Event snippet for Contactó por formulario conversion page -->
             <script>
-                gtag('event', 'generate_lead', {'send_to':'G-5L3986HNDY', 'currency': 'MXN', 'value': 1});
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+
+                gtag('event', 'conversion', {'send_to': 'AW-996157886/4nfiCIH4i-sYEL7TgNsD'});
             </script>
         @endif
         
 
     </div>
 
-</section>
+</div>
+
+@endsection

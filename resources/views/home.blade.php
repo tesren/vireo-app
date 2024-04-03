@@ -20,7 +20,7 @@
         <h1 class="fs-2 mb-4">
           {{__('Condominios de 1, 2 y 3 recámaras')}} <br> {{__('y 4 Villas Exclusivas')}}
         </h1>
-        <a href="#contact" class="btn btn-sand rounded-0 fs-5 shadow-7">{{__('Ver Inventario')}}</a>
+        <a href="{{ route('inventory', request()->query() ) }}" class="btn btn-sand rounded-0 fs-5 shadow-7">{{__('Ver Inventario')}}</a>
       </div>
     </div>
   
@@ -35,7 +35,7 @@
     <div class="col-12 col-lg-5 align-self-center mb-4 mb-lg-0 text-center text-lg-start">
       <h2 class="fs-2">{{__('Sobre el Proyecto')}}</h2>
       <p>{{__('Descubre un estilo de vida privilegiado en Nuevo Vallarta, Nayarit, con la preventa exclusiva de Virēo Living, ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club.Condominios de una, dos y tres recámaras y Villas de cuatro recámaras, Virēo Living ofrece opciones para todos los gustos y necesidades.')}}</p>
-      <a href="#" class="btn btn-sand fs-5 rounded-0 shadow-7">{{__('Ver Inventario')}}</a>    
+      <a href="{{ route('inventory', request()->query() ) }}" class="btn btn-sand fs-5 rounded-0 shadow-7">{{__('Ver Inventario')}}</a>    
     </div>
 
     <div class="col-12 col-lg-5">
@@ -56,37 +56,44 @@
     <div class="col-6 col-lg-7 px-0 position-relative">
       <img src="{{asset('/img/amenities-pool.webp')}}" alt="Alberca de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
-      <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
-        <p class="fs-4 mb-0">{{__('Alberca')}}</p>
-        <hr class="w-100 my-0 sand-hr">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+        <div class="col-12 text-center align-self-center align-self-lg-end">
+          <p class="fs-4 mb-0 text-decoration-underline">{{__('Alberca')}}</p>
+        </div>
       </div>
+
     </div>
 
     <div class="col-6 col-lg-5 px-0 position-relative">
       <img src="{{asset('/img/amenities-jogging.webp')}}" alt="Pista de Jogging de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
-      <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
-        <p class="fs-4 mb-0">{{__('Pista de Jogging')}}</p>
-        <hr class="w-100 my-0 sand-hr">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+        <div class="col-12 text-center align-self-center align-self-lg-end">
+          <p class="fs-4 mb-0 text-decoration-underline">{{__('Pista de Jogging')}}</p>
+        </div>
       </div>
+
     </div>
 
     <div class="col-6 col-lg-5 px-0 position-relative">
       <img src="{{asset('img/amenities-golf-lounge.webp')}}" alt="Golf Lounge en Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
-      <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
-        <p class="fs-4 mb-0">{{__('Golf Lounge')}}</p>
-        <hr class="w-100 my-0 sand-hr">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+        <div class="col-12 text-center align-self-center align-self-lg-end">
+          <p class="fs-4 mb-0 text-decoration-underline">{{__('Golf Lounge')}}</p>
+        </div>
       </div>
     </div>
 
     <div class="col-6 col-lg-7 px-0 position-relative">
       <img src="{{asset('img/amenities-lobby.webp')}}" alt="Lobby de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
 
-      <div class="position-absolute bottom-0 start-50 text-sand mb-2 z-3" style="transform: translateX(-50%)">
-        <p class="fs-4 mb-0">{{__('Lobby Principal')}}</p>
-        <hr class="w-100 my-0 sand-hr">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+        <div class="col-12 text-center align-self-center align-self-lg-end">
+          <p class="fs-4 mb-0 text-decoration-underline">{{__('Lobby Principal')}}</p>
+        </div>
       </div>
+      
     </div>
 
   </section>
@@ -94,7 +101,7 @@
   <img src="{{asset('img/bg-leaf.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;">
 
   {{-- Interiores --}}
-  <section class="row justify-content-center justify-content-lg-start mb-0 text-center text-lg-start bg-green">
+  <section class="row justify-content-center justify-content-lg-start mb-0 text-center text-lg-start bg-green py-5 py-lg-0">
     <div class="col-12 col-lg-7 mb-4 mb-lg-0">
       <div id="carouselExampleCaptions" class="carousel slide">
 
@@ -160,7 +167,7 @@
   {{-- Ubicacion --}}
   <section class="row justify-content-center bg-green">
 
-    <div class="col-12 col-lg-5 align-self-center px-2 px-lg-5">
+    <div class="col-12 col-lg-5 align-self-center px-2 px-lg-5 py-5 py-lg-0">
       <h4 class="fs-1 text-center text-lg-start">{{__('Ubicación')}}</h4>
       <p class="fw-light">
         {{__('Ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club.')}}

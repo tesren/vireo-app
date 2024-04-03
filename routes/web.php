@@ -28,5 +28,11 @@ Route::get('/condominios-en-venta', [PublicPagesController::class, 'condos'])->n
 Route::get('/villas-en-venta', [PublicPagesController::class, 'villas'])->name('villas');
 Route::get('/propiedad-en-venta-en-el-tigre/{property_type}-{name}', [PublicPagesController::class, 'unit'])->name('unit');
 Route::get('/busqueda', [PublicPagesController::class, 'search'])->name('search');
+Route::get('/contacto', [PublicPagesController::class, 'contact'])->name('contact');
+Route::get('/avances-de-obra', [PublicPagesController::class, 'construction'])->name('construction');
+
+Route::get('/aviso-de-privacidad', function () {
+    return view('privacy-policy');
+})->name('privacy');
 
 Route::post('/send-message', [ PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);

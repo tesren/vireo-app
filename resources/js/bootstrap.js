@@ -10,6 +10,9 @@ window.axios = axios;
 import * as bootstrap from 'bootstrap'
 window.bootstrap = bootstrap;
 
+import { Fancybox } from "@fancyapps/ui";
+window.Fancybox = Fancybox;
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

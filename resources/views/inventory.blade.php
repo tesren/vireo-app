@@ -120,6 +120,9 @@
                 </a> 
             @endforeach
 
+            <div class="col-12 col-lg-9 mt-5">
+                {{ $units->links() }}
+            </div>
         </section>
 
     @else

@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Mail\NewLead;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Models\ConstructionUpdate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -140,6 +141,17 @@ class PublicPagesController extends Controller
         $unit = Unit::where('name', $name)->first();
 
         return view('unit', compact('unit'));
+    }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function construction(){
+
+        $const_updates = ConstructionUpdate::all();
+
+        return view('construction', compact('const_updates'));
     }
 
     public function search(Request $request){

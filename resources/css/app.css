@@ -1,5 +1,6 @@
 @import url('/resources/css/bootstrap.min.css');
 @import url('/resources/css/all.min.css');
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 
 :root{
@@ -129,6 +130,20 @@ body{
     transition: 0.3s;
 }
 
+.btn-blurred{
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-blurred:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
 .bg-green{
     background-color: var(--green);
     color: var(--sand);
@@ -197,6 +212,11 @@ body{
     backdrop-filter: blur(10px);
 }
 
+.bg-nav-blurred{
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
 .navbar .nav-link{
     text-transform: uppercase;
     color: white !important;
@@ -221,5 +241,61 @@ body{
 
 .nav-pills .nav-link {
     color: var(--green);
-    background-color: var(--sand);
+    background-color: white;
+}
+
+.table-sand {
+    --bs-table-color: var(--sand);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--sand);
+    color: var(--sand);
+    border-color: var(--sand);
+}
+
+[data-fancybox]:hover{
+    cursor: pointer;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.page-link {
+    color: var(--green);
+    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+}
+
+.bg-nav-green{
+    background-color: transparent;
+}
+
+@media (max-width: 992px) {
+    .mt-6{
+        margin-top: 3.5rem !important;
+    }
+    
+    .mb-6{
+        margin-bottom: 3.5rem !important;
+    }
+    
+    .my-6{
+        margin-top: 3.5rem !important;
+        margin-bottom: 3.5rem !important;
+    }
+
+    .fs-0{
+        font-size: 2.7rem;
+    }
+
+    .bg-nav-green{
+        background-color: var(--green);
+        backdrop-filter: unset !important;
+    }
+
+    .bg-nav-blurred{
+        background-color: var(--green);
+        backdrop-filter: unset !important;
+    }
+
 }

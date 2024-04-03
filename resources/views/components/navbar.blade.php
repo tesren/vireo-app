@@ -1,4 +1,4 @@
-<nav class="navbar bg-blurred fixed-top navbar-expand-xl">
+<nav class="navbar bg-nav-blurred fixed-top navbar-expand-xl navbar-dark">
     <div class="container-fluid px-2 px-lg-5">
 
       <a class="navbar-brand" href="{{route('home')}}">
@@ -9,14 +9,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas offcanvas-end bg-nav-green" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+
+          <div class="offcanvas-title" id="offcanvasNavbarLabel">
+            <img width="180px" src="{{asset('/img/vire-logo-nav.webp')}}" alt="Logo de Virēo Living - El Tigre">
+          </div>
+
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
-        <div class="offcanvas-body">
+        <div class="offcanvas-body bg-nav-green">
 
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
@@ -38,8 +42,18 @@
               </ul>
             </li>
 
+            @php
+              $const_updates = App\Models\ConstructionUpdate::all();
+            @endphp
+
+            @if ( count($const_updates) > 0 )
+              <li class="nav-item me-0 me-lg-5">
+                <a class="nav-link" href="{{ route('construction') }}">{{__('Avance de Obra')}}</a>
+              </li>
+            @endif
+
             <li class="nav-item me-0 me-lg-5">
-                <a class="nav-link" href="#">{{__('Avance de Obra')}}</a>
+              <a class="nav-link" href="{{ route('contact') }}">{{__('Contacto')}}</a>
             </li>
 
           </ul>

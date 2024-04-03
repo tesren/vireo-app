@@ -36,11 +36,15 @@
 
         <div class="row">
             <div class="col-12 col-lg-8 px-0">
-                <img src="{{ $images[0]->getUrl('large') }}" alt="{{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
+                <img src="{{ $images[0]->getUrl('medium') }}" alt="{{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
             </div>
 
-            <div class="col-12 col-lg-4 pe-0">
-                <img src="{{ $images[1]->getUrl('large') }}" alt="{{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
+            <div class="col-12 col-lg-4 pe-0 d-none d-lg-block">
+                @if ( $images[1]->getUrl('medium') )
+                    <img src="{{ $images[1]->getUrl('medium') }}" alt="{{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
+                @else
+                    <img src="{{ asset('/img/villa-interior-exterior.webp') }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
+                @endif
             </div>
         </div>
         
@@ -61,9 +65,19 @@
                 </h1>
                 
             </div>
+
+            <div class="col-12 col-lg-4 align-self-center text-center mt-0 mt-lg-5">
+                <a href="#gallery-1" class="btn btn-blurred fs-4 rounded-0 px-4 py-2">
+                    <i class="fa-regular fa-image"></i> {{__('Galería')}}
+                </a>
+            </div>
         </div>
 
     </div>
+
+    @foreach ($images as $image)
+        <img src="{{ $image->getUrl('large') }}" alt="{{__('Galería de')}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="gallery" class="d-none">
+    @endforeach
 
     {{-- Detalles --}}
     <div class="row justify-content-evenly mb-6">
@@ -121,17 +135,17 @@
         </div>
     </div>
 
-    {{-- Planes de pago --}}
     <div class="row bg-green py-5 justify-content-evenly">
 
-        <div class="col-12 col-lg-5 px-0">
+        {{-- Planes de pago --}}
+        <div class="col-12 col-lg-5 px-0" >
 
             
-            <div class="bg-sand px-0 pb-1">
+            <div class="bg-sand px-0 shadow-4">
                 <ul class="nav nav-pills px-3 px-lg-5 py-4" id="pills-tab" role="tablist">
     
-                    <li class="me-4">
-                        <h3>{{__('Planes de Pago')}}</h3>
+                    <li class="me-3 d-flex">
+                        <h3 class="fs-4 mb-0 align-self-center">{{__('Planes de Pago')}}</h3>
                     </li>
     
                     @php
@@ -140,7 +154,7 @@
     
                     @foreach ($unit->paymentPlans as $plan)
     
-                        <li class="nav-item" role="presentation">
+                        <li class="nav-item me-1" role="presentation">
                             <button class="nav-link rounded-pill @if($i==0) active @endif" id="pills-{{$plan->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-plan-{{$plan->id}}" type="button" role="tab">
                                 @if (app()->getLocale() == 'en')
                                     {{$plan->name_en}}
@@ -157,7 +171,10 @@
                     
                 </ul>
     
-                <div class="tab-content" id="pills-tabContent">
+                <div class="tab-content position-relative" id="pills-tabContent">
+
+                    <img src="{{ asset('img/background-plans.webp') }}" alt="" class="w-100 position-absolute end-0 bottom-0" style="z-index:1; opacity:0.2;">
+
                     @php $i = 0; @endphp
                     @foreach ($unit->paymentPlans as $plan)
     
@@ -169,7 +186,7 @@
                             }
                         @endphp 
     
-                        <div class="tab-pane fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
+                        <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
                             
                             <div class="py-4 bg-blue text-center">
                                 <div>{{__('Precio Final')}}</div>
@@ -188,9 +205,9 @@
                                     <div class="fs-4">{{__('Descuento')}} ({{$plan->discount}}%)</div>
                                     <div class="fs-4">${{ number_format( $unit->price * ($plan->discount/100) ) }} {{ $unit->currency }}</div>
                                 </div>
+
+                                <hr class="green-hr">
                             @endisset
-    
-                            <hr class="green-hr">
     
                             @isset($plan->down_payment)
                                 <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
@@ -220,7 +237,7 @@
                             @endisset
     
                             @isset($plan->closing_payment)
-                                <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                <div class="d-flex justify-content-between px-2 px-lg-4 fw-light">
                                     <div class="fs-4">
                                         {{__('Pago Final')}} ({{$plan->closing_payment}}%)
                                         <div class="fs-7 fw-light">{{__('A la entrega física de la propiedad')}}.</div>
@@ -252,7 +269,57 @@
 
         </div>
 
+        {{-- Planos --}}
+        <div class="col-12 col-lg-5 align-self-center">
+            <img src="{{ asset('media/'.$unit->unitType->blueprint_path) }}" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint" class="w-100 mb-3">
+            <h4 class="text-center">{{__('Construcción total')}}: {{$unit->total_const}} m²</h4>
+            <table class="table table-sand">
+                <tbody>
+
+                    <tr>
+                        <td>{{__('Interior')}}</td>
+                        <td>{{$unit->interior_const}} m²</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{__('Terraza')}}</td>
+                        <td>{{$unit->exterior_const}} m²</td>
+                    </tr>
+
+                    @isset($unit->extra_exterior_const)
+                        <tr>
+                            <td>{{__('Terraza Extra')}}</td>
+                            <td>{{$unit->extra_exterior_const}} m²</td>
+                        </tr>
+                    @endisset
+
+                    <tr>
+                        <td>{{__('Estacionamiento')}}</td>
+                        <td>{{ number_format($unit->parking_area, 2) }} m²</td>
+                    </tr>
+
+                    @isset($unit->storage_area)
+                        <tr>
+                            <td>{{__('Bodega')}}</td>
+                            <td>{{$unit->storage_area}} m²</td>
+                        </tr>
+                    @endisset
+
+                    @isset($unit->garden_area)
+                        <tr>
+                            <td>{{__('Jardín')}}</td>
+                            <td>{{$unit->garden_area}} m²</td>
+                        </tr>
+                    @endisset
+
+                </tbody>
+
+            </table>
+        </div>
+
     </div>
+
+    <img src="{{asset('img/details.svg')}}" alt="" class="w-100 d-none d-lg-block" style="height: 100px; object-fit:cover;">
 
     @include('components.contact-form')
 
