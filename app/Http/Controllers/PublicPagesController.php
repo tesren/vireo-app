@@ -136,9 +136,9 @@ class PublicPagesController extends Controller
         return view('inventory', compact('units'));
     }
 
-    public function unit($property_type, $name){
+    public function unit($property_type, $name, $tower){
 
-        $unit = Unit::where('name', $name)->first();
+        $unit = Unit::where('name', $name)->where('tower_name', $tower)->first();
 
         return view('unit', compact('unit'));
     }

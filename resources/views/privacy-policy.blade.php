@@ -41,7 +41,6 @@
                     
                 <p>It is important to note that you have the right to access, rectify or cancel any of the DATA and refuse its use. In order to do so, you must present your request to the technology department under the stipulations established in Article 29 of the Federal Law for the Protection of Personal Information. This department is located at KM 3.7 CARRETERA PUNTA MITA, INTERIOR 21-1. CONDOMINIO REAL DEL MAR. LA CRUZ DE HUANACAXTLE, 63732, BAHIA DE BANDERAS, NAYARIT or via email message to  <a href="mailto:sistemas@domusvallarta.com?Subject=Mis%20Datos">sistemas@domusvallarta.com </a> In this case we ask that you confirm the receipt of your email via telephone to +52 (329) 298 5010.</p>
                 
-                <a href="https://punto401.com/">Website by Punto401 Marketing</a>
             </article>
         @else
             <article>

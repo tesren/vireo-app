@@ -6,8 +6,10 @@ return [
     '/contacto' => '/contacto',
     '/sobre-nosotros' => '/sobre-nosotros',
     '/aviso-de-privacidad' => '/aviso-de-privacidad',
-    '/inventario-condominios' => '/inventario-condominios',
     '/avances-de-obra' => '/avances-de-obra',
     '/busqueda' => '/busqueda',
-    '/condominio-en-venta' => '/condominio-en-venta'
+    '/villas-en-venta' => '/villas-en-venta',
+    '/condominios-en-venta' => '/condominios-en-venta',
+    '/condominios-y-villas-en-venta' => '/condominios-y-villas-en-venta',
+    '/propiedad-en-venta-en-el-tigre' => '/propiedad-en-venta-en-el-tigre'
 ];

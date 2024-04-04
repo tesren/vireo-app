@@ -1,7 +1,7 @@
 @extends('components.base')
 
 @section('titles')
-    <title>{{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre</title>
+    <title>{{ __($unit->unitType->property_type) }} {{$unit->name}} - Virēo Living, El Tigre</title>
     <meta name="description" content="{{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}m² {{__('ofrece')}} {{$unit->unitType->bedrooms}} {{__('recámaras y')}} {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}">
 @endsection
 
@@ -40,10 +40,10 @@
             </div>
 
             <div class="col-12 col-lg-4 pe-0 d-none d-lg-block">
-                @if ( $images[1]->getUrl('medium') )
+                @if ( isset($images[1]) )
                     <img src="{{ $images[1]->getUrl('medium') }}" alt="{{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
                 @else
-                    <img src="{{ asset('/img/villa-interior-exterior.webp') }} {{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
+                    <img src="{{ asset('/img/villa-interior-exterior.webp') }}" alt="{{$unit->name}} - Virēo Living, El Tigre" class="w-100" style="height: 100vh; object-fit:cover;">
                 @endif
             </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="fondo-oscuro"></div>
 
         <div class="row justify-content-center justify-content-lg-start position-absolute top-0 left-0 h-100 z-3">
-            <div class="col-11 col-lg-8 text-center text-sand align-self-center mt-6">
+            <div class="col-11 col-lg-8 text-center text-sand align-self-end align-self-lg-center mt-6">
 
                 <h1 class="fs-1 mb-4 ">
                     {{ __($unit->unitType->property_type) }} {{$unit->name}}
@@ -66,10 +66,12 @@
                 
             </div>
 
-            <div class="col-12 col-lg-4 align-self-center text-center mt-0 mt-lg-5">
+            <div class="col-12 col-lg-4 align-self-start align-self-lg-center text-center mt-0 mt-lg-5">
+
                 <a href="#gallery-1" class="btn btn-blurred fs-4 rounded-0 px-4 py-2">
                     <i class="fa-regular fa-image"></i> {{__('Galería')}}
                 </a>
+
             </div>
         </div>
 
@@ -90,7 +92,7 @@
                 {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}.
             </p>
 
-            <div class="d-flex fs-6 mt-4">
+            <div class="d-flex justify-content-center justify-content-lg-start fs-5 mt-4">
 
                 <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Recámaras')}}">
                     <i class="fa-solid fa-bed"></i> {{$unit->unitType->bedrooms}}@if($unit->unitType->flexrooms == 1).5 @endif
@@ -99,19 +101,6 @@
                 <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Baños')}}">
                     <i class="fa-solid fa-bath"></i> {{$unit->unitType->bathrooms}}
                 </div>
-
-                @isset($unit->parking_area)
-                    <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Estacionamiento')}}">
-                        <i class="fa-solid fa-car"></i> {{$unit->parking_area}} m²
-                    </div>
-                @endisset
-                
-                @isset($unit->garden_area)
-                    <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Jardín')}}">
-                        <i class="fa-solid fa-seedling"></i> {{$unit->garden_area}} m²
-                    </div>
-                @endisset
-
                 
                 <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Área total')}}">
                     <i class="fa-solid fa-house"></i> {{$unit->total_const}} m²
@@ -123,7 +112,7 @@
         <div class="col-12 col-lg-4 text-center align-self-center">
 
             <div class="badge {{$status_class}} rounded-pill fw-light fs-6">
-                {{$unit->status}}
+                {{__($unit->status)}}
             </div>
 
             <div class="fs-1 my-2">${{ number_format($unit->price) }} {{$unit->currency}}</div>
@@ -138,13 +127,16 @@
     <div class="row bg-green py-5 justify-content-evenly">
 
         {{-- Planes de pago --}}
-        <div class="col-12 col-lg-5 px-0" >
+        <div class="col-12 col-lg-5 px-2 px-lg-0 order-2 order-lg-1">
 
             
             <div class="bg-sand px-0 shadow-4">
-                <ul class="nav nav-pills px-3 px-lg-5 py-4" id="pills-tab" role="tablist">
+
+                <h3 class="fs-4 mb-3 text-center d-block d-lg-none pt-4">{{__('Planes de Pago')}}</h3>
+
+                <ul class="position-relative nav nav-pills px-3 px-lg-5 pb-4 pt-0 pt-lg-4 justify-content-center justify-content-lg-start z-3" id="pills-tab" role="tablist">
     
-                    <li class="me-3 d-flex">
+                    <li class="me-3 d-none d-lg-flex">
                         <h3 class="fs-4 mb-0 align-self-center">{{__('Planes de Pago')}}</h3>
                     </li>
     
@@ -173,7 +165,7 @@
     
                 <div class="tab-content position-relative" id="pills-tabContent">
 
-                    <img src="{{ asset('img/background-plans.webp') }}" alt="" class="w-100 position-absolute end-0 bottom-0" style="z-index:1; opacity:0.2;">
+                    <img src="{{ asset('img/background-plans.webp') }}" alt="" class="w-100 position-absolute end-0 bottom-0" style="height:120%; z-index:1; opacity:0.2;">
 
                     @php $i = 0; @endphp
                     @foreach ($unit->paymentPlans as $plan)
@@ -213,7 +205,7 @@
                                 <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                     <div class="fs-4">
                                         {{__('Enganche')}} ({{$plan->down_payment}}%)
-                                        <div class="fs-7 fw-light">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
+                                        <div class="fs-7 fw-light d-none d-lg-block">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
                                     </div>
                                     <div class="fs-4">${{ number_format( $final_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
                                 </div>
@@ -223,7 +215,7 @@
                                 <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                     <div class="fs-4">
                                         {{__('Segundo pago')}} ({{$plan->second_payment}}%)
-                                        <div class="fs-7 fw-light">{{__('Sesenta días después del enganche')}}.</div>
+                                        <div class="fs-7 fw-light d-none d-lg-block">{{__('Sesenta días después del enganche')}}.</div>
                                     </div>
                                     <div class="fs-4">${{ number_format( $final_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
                                 </div>
@@ -240,7 +232,7 @@
                                 <div class="d-flex justify-content-between px-2 px-lg-4 fw-light">
                                     <div class="fs-4">
                                         {{__('Pago Final')}} ({{$plan->closing_payment}}%)
-                                        <div class="fs-7 fw-light">{{__('A la entrega física de la propiedad')}}.</div>
+                                        <div class="fs-7 fw-light d-none d-lg-block">{{__('A la entrega física de la propiedad')}}.</div>
                                     </div>
                                     <div class="fs-4">${{ number_format( $final_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
                                 </div>
@@ -270,8 +262,44 @@
         </div>
 
         {{-- Planos --}}
-        <div class="col-12 col-lg-5 align-self-center">
-            <img src="{{ asset('media/'.$unit->unitType->blueprint_path) }}" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint" class="w-100 mb-3">
+        <div class="col-12 col-lg-5 align-self-center order-1 order-lg-2">
+
+            @php
+                $blueprints = $unit->unitType->getMedia('blueprints');
+            @endphp
+
+            @if ( count($blueprints) > 1 )
+
+                <div id="carouselBlueprints" class="carousel slide">
+
+                    <div class="carousel-inner">
+
+                        @php $i=0; @endphp
+                        @foreach ($blueprints as $blueprint)
+                            <div class="carousel-item @if($i==0) active @endif">
+                                <img src="{{ $blueprint->getUrl('large') }}" class="d-block w-100" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint">
+                            </div>
+                            @php $i++; @endphp
+                        @endforeach
+                        
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+            @else
+                <img src="{{ $blueprints[0]->getUrl('large') }}" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint" class="w-100 mb-3">
+            @endif
+
+
             <h4 class="text-center">{{__('Construcción total')}}: {{$unit->total_const}} m²</h4>
             <table class="table table-sand">
                 <tbody>

@@ -6,8 +6,11 @@ return [
     '/contacto' => '/contact',
     '/sobre-nosotros' => '/about-us',
     '/aviso-de-privacidad' => '/privacy-policy',
-    '/inventario-condominios' => '/inventory-condos-for-sale',
     '/avances-de-obra' => '/construction-progress',
     '/busqueda' => '/search',
-    '/condominio-en-venta' => '/condominium-for-sale'
+    '/condominios-en-venta' => '/condominiums-for-sale',
+    '/villas-en-venta' => '/villas-for-sale',
+    '/condominios-y-villas-en-venta' => '/condos-and-villas-for-sale',
+    '/propiedad-en-venta-en-el-tigre' => '/property-for-sale-el-tigre'
+
 ];

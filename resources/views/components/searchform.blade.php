@@ -3,9 +3,9 @@
     <div class="col-12 col-lg-8 col-xxl-7">
         <form action="{{route('search')}}" method="get">
             @csrf
-            <div class="input-group shadow-4 rounded-2">
+            <div class="rounded-2" id="search_input_group">
                 
-                <div class="form-floating">
+                <div class="form-floating mb-3 mb-lg-0">
                     <select class="form-select" id="property_type" name="property_type" aria-label="{{__('Tipo')}}">
                       <option value="">{{__('Cualquier tipo')}}</option>
                       <option @if(old('property_type')=='Condominio') selected @endif value="Condominio">{{__('Condominios')}}</option>
@@ -14,7 +14,7 @@
                     <label for="property_type">{{__('Tipo')}}</label>
                 </div>
 
-                <div class="form-floating">
+                <div class="form-floating mb-3 mb-lg-0">
                     <select class="form-select" id="bedrooms" name="bedrooms" aria-label="{{__('Recámaras')}}">
                       <option value="">{{__('Cualquier cantidad')}}</option>
                       <option @if(old('bedrooms')==1) selected @endif value="1">1</option>
@@ -25,7 +25,7 @@
                     <label for="bedrooms">{{__('Recámaras')}}</label>
                 </div>
 
-                <div class="form-floating">
+                <div class="form-floating mb-3 mb-lg-0">
                     <select class="form-select" id="min_price" name="min_price" aria-label="{{__('Precio min.')}}">
                       <option value="">{{__('Sin mínimo')}}</option>
                       <option @if(old('min_price')==7500000) selected @endif value="7500000">$7.5m</option>
@@ -45,7 +45,7 @@
                     <label for="min_price">{{__('Precio min.')}}</label>
                 </div>
 
-                <div class="form-floating">
+                <div class="form-floating mb-3 mb-lg-0">
                     <select class="form-select" id="max_price" name="max_price" aria-label="{{__('Precio max.')}}">
                       <option value="">{{__('Sin máximo')}}</option>
                       <option @if(old('max_price')==8000000) selected @endif value="8000000">$8m</option>
@@ -65,7 +65,7 @@
                     <label for="max_price">{{__('Precio max.')}}</label>
                 </div>
 
-                <button type="submit" class="btn btn-green rounded-end-2" aria-label="{{__('Buscar')}}">
+                <button type="submit" class="btn btn-green rounded-end-2 col-12 col-lg-1" aria-label="{{__('Buscar')}}">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>

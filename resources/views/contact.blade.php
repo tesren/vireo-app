@@ -1,7 +1,7 @@
 @extends('components.base')
 
 @section('titles')
-    <title>Virēo Living - {{__('Contacto')}}</title>
+    <title>{{__('Contacto')}} - Virēo Living, El Tigre</title>
     <meta name="description" content="{{__('Contacta a nuestro equipo de asesores de ventas en Virēo Living en Nuevo Vallarta, Nayarit. Completa nuestro formulario de contacto y recibe asistencia personalizada para encontrar la propiedad ideal para ti. Descubre un estilo de vida exclusivo frente al campo de golf El Tigre Golf & Country Club. ¡Contáctanos hoy y haz realidad tu sueño de vivir en Nuevo Vallarta!')}}">
 @endsection
 

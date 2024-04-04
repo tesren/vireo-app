@@ -27,7 +27,7 @@
 
   </div>
 
-  <img src="{{asset('img/details.svg')}}" alt="" class="w-100 d-none d-lg-block" style="height: 100px; object-fit:cover;">
+  <img src="{{asset('img/details.svg')}}" alt="" class="w-100 d-none d-lg-block" style="height: 100px; object-fit:cover;" loading="lazy">
 
   {{-- descripcion --}}
   <section class="row justify-content-evenly mb-6 bg-green py-5 mt-5 mt-lg-0">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-12 col-lg-5">
-      <img src="{{asset('img/interiors-home.webp')}}" alt="Interiores de Virēo Living ElTigre" class="w-100 shadow-7">
+      <img src="{{asset('img/interiors-home.webp')}}" alt="Interiores de Virēo Living ElTigre" class="w-100 shadow-7" loading="lazy">
     </div>
 
   </section>
@@ -54,43 +54,43 @@
     <div class="fondo-oscuro-sutil"></div>
 
     <div class="col-6 col-lg-7 px-0 position-relative">
-      <img src="{{asset('/img/amenities-pool.webp')}}" alt="Alberca de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('/img/amenities-pool.webp')}}" alt="Alberca de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;" data-fancybox="amenities" loading="lazy">
 
-      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 mb-2 z-3">
         <div class="col-12 text-center align-self-center align-self-lg-end">
-          <p class="fs-4 mb-0 text-decoration-underline">{{__('Alberca')}}</p>
+          <a href="#amenities-1" class="fs-4 mb-0 text-decoration-underline text-sand">{{__('Alberca')}}</a>
         </div>
       </div>
 
     </div>
 
     <div class="col-6 col-lg-5 px-0 position-relative">
-      <img src="{{asset('/img/amenities-jogging.webp')}}" alt="Pista de Jogging de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('/img/amenities-jogging.webp')}}" alt="Pista de Jogging de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;" data-fancybox="amenities" loading="lazy">
 
-      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 mb-2 z-3">
         <div class="col-12 text-center align-self-center align-self-lg-end">
-          <p class="fs-4 mb-0 text-decoration-underline">{{__('Pista de Jogging')}}</p>
+          <a href="#amenities-2" class="fs-4 mb-0 text-decoration-underline text-sand">{{__('Pista de Jogging')}}</a>
         </div>
       </div>
 
     </div>
 
     <div class="col-6 col-lg-5 px-0 position-relative">
-      <img src="{{asset('img/amenities-golf-lounge.webp')}}" alt="Golf Lounge en Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('img/amenities-golf-lounge.webp')}}" alt="Golf Lounge en Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;" data-fancybox="amenities" loading="lazy">
 
-      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 mb-2 z-3">
         <div class="col-12 text-center align-self-center align-self-lg-end">
-          <p class="fs-4 mb-0 text-decoration-underline">{{__('Golf Lounge')}}</p>
+          <a href="#amenities-3" class="fs-4 mb-0 text-decoration-underline text-sand">{{__('Golf Lounge')}}</a>
         </div>
       </div>
     </div>
 
     <div class="col-6 col-lg-7 px-0 position-relative">
-      <img src="{{asset('img/amenities-lobby.webp')}}" alt="Lobby de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;">
+      <img src="{{asset('img/amenities-lobby.webp')}}" alt="Lobby de Virēo Living" class="w-100" style="height: 40vh; object-fit:cover;" data-fancybox="amenities" loading="lazy">
 
-      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 text-sand mb-2 z-3">
+      <div class="row justify-content-center position-absolute bottom-0 start-0 h-100 w-100 mb-2 z-3">
         <div class="col-12 text-center align-self-center align-self-lg-end">
-          <p class="fs-4 mb-0 text-decoration-underline">{{__('Lobby Principal')}}</p>
+          <a href="#amenities-4" class="fs-4 mb-0 text-decoration-underline text-sand">{{__('Lobby Principal')}}</a>
         </div>
       </div>
       
@@ -98,7 +98,7 @@
 
   </section>
 
-  <img src="{{asset('img/bg-leaf.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;">
+  <img src="{{asset('img/bg-leaf.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;" loading="lazy">
 
   {{-- Interiores --}}
   <section class="row justify-content-center justify-content-lg-start mb-0 text-center text-lg-start bg-green py-5 py-lg-0">
@@ -123,21 +123,21 @@
           <div class="carousel-item">
             <img src="{{asset('/img/fachada-villa.webp')}}" class="d-block w-100" alt="Alberca de las Villas Virēo Living" loading="lazy">
             <div class="carousel-caption">
-              <h4>Alberca - Villas</h4>
+              <h4>{{__('Alberca')}} - Villas</h4>
             </div>
           </div>
 
           <div class="carousel-item">
             <img src="{{asset('/img/debpa-b02.webp')}}" class="d-block w-100" alt="Sala Comedor de los Condominios Virēo Living" loading="lazy">
             <div class="carousel-caption">
-              <h4>Sala Comedor - Condominios</h4>
+              <h4>{{__('Sala Comedor')}} - {{__('Condominios')}}</h4>
             </div>
           </div>
 
           <div class="carousel-item">
             <img src="{{asset('/img/depa-a01.webp')}}" class="d-block w-100" alt="Sala Comedor de los Condominios Virēo Living" loading="lazy">
             <div class="carousel-caption">
-              <h4>Sala Cocina - Condominios</h4>
+              <h4>{{__('Sala Cocina')}} - {{__('Condominios')}}</h4>
             </div>
           </div>
 
@@ -162,7 +162,7 @@
     </div>
   </section>
 
-  <img src="{{asset('img/bg-leaf-2.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;">
+  <img src="{{asset('img/bg-leaf-2.webp')}}" alt="" class="w-100" style="height: 100px; object-fit:cover;" loading="lazy">
 
   {{-- Ubicacion --}}
   <section class="row justify-content-center bg-green">

@@ -71,7 +71,7 @@ class Unit extends Resource
         return [
             ID::make()->sortable()->hideFromDetail()->hideFromIndex(),
 
-            Text::make('Unidad', 'name')->rules('required', 'max:50')->sortable()->creationRules('unique:units,name')->updateRules('unique:units,name,{{resourceId}}')->placeholder('Nombre o número de la unidad'),
+            Text::make('Unidad', 'name')->rules('required', 'max:50')->sortable()->placeholder('Nombre o número de la unidad'),
 
             BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable(),
 

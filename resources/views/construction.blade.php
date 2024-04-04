@@ -1,8 +1,8 @@
 @extends('components.base')
 
 @section('titles')
-    <title>Virēo Living - {{__('Avances de Obra')}}</title>
-    <meta name="description" content="{{__('')}}">
+    <title>{{__('Avances de Obra')}} - Virēo Living, El Tigre</title>
+    <meta name="description" content="{{__('Avances mensuales de obra de Virēo Living en Nuevo Vallarta, Nayarit! Descubre nuestro progreso a través de imágenes y videos actualizados regularmente. Desde la construcción de nuestras exclusivas amenidades hasta la evolución de las residencias, te invitamos a seguir de cerca nuestro desarrollo. Sumérgete en la experiencia Virēo Living y vislumbra tu futuro hogar en uno de los destinos más privilegiados de México. ¡No te pierdas ningún detalle de nuestra transformación!')}}">
 @endsection
 
 @section('content')
@@ -59,7 +59,7 @@
                     </div>
     
                     <div class="card-body bg-green d-flex position-relative">
-                        <img class="ms-4 me-5" src="{{asset('img/vire-logo-nav.webp')}}" alt="Logo de Virēo Living" height="64px">
+                        <img class="ms-4 me-5 d-none d-lg-block" src="{{asset('img/vire-logo-nav.webp')}}" alt="Logo de Virēo Living" height="64px">
                         
                         <h2 class="mb-0 lh-1">
                             {{$date}} <br> 
