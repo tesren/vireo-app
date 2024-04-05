@@ -177,7 +177,7 @@
     </div>
 
     <div class="col-12 col-lg-7 px-0 py-0">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7464.3161031868585!2d-105.29469164486922!3d20.703805580865442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842146962726718f%3A0x64401401488f6019!2sP.%C2%BA%20de%20las%20Garzas%20290%2C%20El%20Tigre%2C%2063735%20Nuevo%20Vallarta%2C%20Nay.!5e0!3m2!1ses-419!2smx!4v1709924622735!5m2!1ses-419!2smx" width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
+      <div class="w-100" id="map" style="height: 600px;"></div>
     </div>
 
   </section>
@@ -185,4 +185,41 @@
   {{-- Formulario --}}
   @include('components.contact-form')
 
+@endsection
+
+@section('javascript')
+  <script>
+
+    // Tu código aquí se ejecutará una vez que el DOM esté listo
+    let map;
+
+    async function initMap() {
+
+      const { Map } = await google.maps.importLibrary("maps");
+
+      let lat = '20.703895194267'; 
+      let long = '-105.28934848857'; 
+
+      let dev_position = new google.maps.LatLng(lat, long);
+
+      map = new Map(document.getElementById("map"), {
+        center: dev_position,
+        zoom: 14,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: false,
+        rotateControl: true,
+        fullscreenControl: false
+      });
+
+      const marker = new google.maps.Marker({
+        position: dev_position,
+        map: map,
+        draggable: false,
+      });
+    }
+    
+  </script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANY3liQL-YPxxqSI76WOTso91EPHv-XXk&amp;callback=initMap"></script>
 @endsection

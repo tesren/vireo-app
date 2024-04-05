@@ -275,6 +275,10 @@ body{
     text-decoration-color: var(--sand) !important;
 }
 
+.tooltip{
+    --bs-tooltip-zindex : 500;
+}
+
 @media (max-width: 992px) {
     .mt-6{
         margin-top: 3.5rem !important;

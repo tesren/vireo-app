@@ -12,23 +12,22 @@
       <div class="offcanvas offcanvas-end bg-nav-green" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
         <div class="offcanvas-header">
-
-          <div class="offcanvas-title" id="offcanvasNavbarLabel">
-            <img width="180px" src="{{asset('/img/vire-logo-nav.webp')}}" alt="Logo de Virēo Living - El Tigre">
-          </div>
-
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
         <div class="offcanvas-body bg-nav-green">
 
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <ul class="navbar-nav text-center justify-content-end flex-grow-1 pe-3">
 
-            <li class="nav-item me-0 me-lg-5">
+            <li class="nav-item me-0 mb-3 d-block d-lg-none">
+              <img class="w-50" src="{{ asset('/img/vireo-bone-color.svg') }}" alt="Logo de Virēo Living, El Tigre">
+            </li>
+
+            <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
               <a class="nav-link" href="{{route('home')}}">{{__('Inicio')}}</a>
             </li>
 
-            <li class="nav-item dropdown me-0 me-lg-5">
+            <li class="nav-item dropdown me-0 me-lg-5 mb-2 mb-lg-0">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{__('Inventario')}}
               </a>
@@ -47,16 +46,16 @@
             @endphp
 
             @if ( count($const_updates) > 0 )
-              <li class="nav-item me-0 me-lg-5">
+              <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
                 <a class="nav-link" href="{{ route('construction') }}">{{__('Avance de Obra')}}</a>
               </li>
             @endif
 
-            <li class="nav-item me-0 me-lg-5">
+            <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
               <a class="nav-link" href="{{ route('contact') }}">{{__('Contacto')}}</a>
             </li>
 
-            <li class="nav-item me-0 me-lg-5">
+            <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
 
               @php
                 $route = Route::currentRouteName();

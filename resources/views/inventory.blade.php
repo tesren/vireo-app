@@ -65,8 +65,13 @@
 
                 @php
                     $images = $unit->unitType->getMedia('gallery');
-                    $portrait = $images[0]->getUrl('thumb');
                     $status_class = $unit->status;
+
+                    if( !isset($images[0]) ){
+                        $portrait = asset('/img/depa-c02.webp');
+                    }else{
+                        $portrait = $images[0]->getUrl('thumb');
+                    }
 
                     switch ($status_class) {
                         case 'Disponible':
@@ -103,7 +108,7 @@
                         <img src="{{ $portrait }}" class="w-100" alt="{{$unit->unitType->property_type}} {{$unit->name}}" style="height: 300px; object-fit:cover;">
 
                         <div class="card-body text-green">
-                            <h3 class="card-title fs-5">{{__($unit->unitType->property_type)}} {{$unit->name}} - {{__('Tower')}} {{$unit->tower_name}}</h3>
+                            <h3 class="card-title fs-5">{{__($unit->unitType->property_type)}} {{$unit->name}} - {{__('Torre')}} {{$unit->tower_name}}</h3>
                             <p class="card-text fs-7">
                                 {{__($unit->unitType->property_type)}} {{__('con')}} {{$unit->unitType->bedrooms}} {{__('recámaras')}}, {{$unit->unitType->bathrooms}} {{__('baños y un área total de')}} 
                                 {{$unit->total_const}} m², {{__('ubicado en el piso')}} {{$unit->floor}} {{__('de la Torre')}} {{$unit->tower_name}}.
@@ -189,7 +194,7 @@
                         <img src="{{ $portrait }}" class="w-100" alt="{{$unit->unitType->property_type}} {{$unit->name}}" style="height: 300px; object-fit:cover;">
 
                         <div class="card-body text-green">
-                            <h3 class="card-title fs-5">{{__($unit->unitType->property_type)}} {{$unit->name}} - {{__('Tower')}} {{$unit->tower_name}}</h3>
+                            <h3 class="card-title fs-5">{{__($unit->unitType->property_type)}} {{$unit->name}} - {{__('Torre')}} {{$unit->tower_name}}</h3>
                             <p class="card-text fs-7">
                                 {{__($unit->unitType->property_type)}} {{__('con')}} {{$unit->unitType->bedrooms}} {{__('recámaras')}}, {{$unit->unitType->bathrooms}} {{__('baños y un área total de')}} 
                                 {{$unit->total_const}} m², {{__('ubicado en el piso')}} {{$unit->floor}} {{__('de la Torre')}} {{$unit->tower_name}}.

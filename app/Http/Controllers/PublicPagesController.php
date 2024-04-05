@@ -98,12 +98,12 @@ class PublicPagesController extends Controller
             ];
 
             // Enviar la solicitud POST al webhook
-            //$response = Http::post($webhookUrl, $data);
+            $response = Http::post($webhookUrl, $data);
 
 
-            //$email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');
+            $email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');
         
-            $email = Mail::to('erick@punto401.com');
+            //$email = Mail::to('erick@punto401.com');
             
             $email->send(new NewLead($msg));
 
@@ -117,7 +117,7 @@ class PublicPagesController extends Controller
 
     public function inventory(){
 
-        $units = Unit::orderBy('price', 'asc')->paginate(12)->appends(request()->query());
+        $units = Unit::inRandomOrder()->paginate(12)->appends(request()->query());
 
         return view('inventory', compact('units'));
     }
