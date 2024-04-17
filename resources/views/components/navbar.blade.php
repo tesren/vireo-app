@@ -37,7 +37,7 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="{{route('inventory')}}">{{__('Ver todo')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('graphic.inventory')}}">{{__('Ver todo')}}</a></li>
               </ul>
             </li>
 

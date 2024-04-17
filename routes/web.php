@@ -33,6 +33,7 @@ Route::localized(function () {
     Route::get( Lang::uri('/busqueda'), [PublicPagesController::class, 'search'])->name('search');
     Route::get( Lang::uri('/contacto') , [PublicPagesController::class, 'contact'])->name('contact');
     Route::get( Lang::uri('/avances-de-obra') , [PublicPagesController::class, 'construction'])->name('construction');
+    Route::get( Lang::uri('/inventario-grafico') , [PublicPagesController::class, 'graphicInventory'])->name('graphic.inventory');
 
     Route::get( Lang::uri('/aviso-de-privacidad'), function () { return view('privacy-policy');} )->name('privacy');
 

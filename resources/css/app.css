@@ -14,6 +14,11 @@ h1, h2, h3, h4, h5, h6{
     letter-spacing: 5px;
 }
 
+.ff-forum{
+    font-family: 'Forum', serif !important;
+    letter-spacing: 4px;
+}
+
 body{
     background-color: var(--sand);
     color: var(--green);
@@ -95,6 +100,19 @@ body{
 
 .btn{
     font-family: 'Forum', serif !important; 
+}
+
+.btn-outline-green {
+    --bs-btn-color: #5B5942;
+    --bs-btn-border-color: #5B5942;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #5B5942;
+    --bs-btn-hover-border-color: #5B5942;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #5B5942;
+    --bs-btn-active-border-color: #5B5942;
+    --bs-btn-disabled-color: #5B5942;
+    --bs-btn-disabled-border-color: #5B5942;
 }
 
 .btn-sand{
@@ -278,6 +296,58 @@ body{
 .tooltip{
     --bs-tooltip-zindex : 500;
 }
+
+.unit-disponible{
+    fill: #27A442;
+    mix-blend-mode: multiply;
+    stroke: #1e7e32;
+    stroke-width: 1px;
+    transition: 0.2s;
+}
+
+.unit-square:hover .unit-disponible{
+    fill: #1e7e32 ;
+    transition: 0.3s;
+}
+
+.unit-apartada{
+    fill: #E5D21C;
+    stroke: #c0ae0c;
+    stroke-width: 1px;
+    mix-blend-mode: multiply;
+    transition: 0.2s;
+}
+
+.unit-square:hover .unit-apartada{
+    fill: #c0ae0c;
+    transition: 0.3s;
+}
+
+.unit-vendida{
+    fill: #FF6363;
+    stroke: #dc3545;
+    stroke-width: 1px;
+    mix-blend-mode: multiply;
+    transition: 0.2s;
+}
+
+.unit-square:hover .unit-vendida{
+    fill: #dc3545;
+    transition: 0.3s;
+}
+
+.unit-sand{
+    fill: var(--sand);
+    stroke: var(--sand);
+    stroke-width: 1px;
+}
+
+.lobby-shape{
+    fill: #e8e4dd;
+    stroke: var(--green);
+    stroke-width: 1px;
+}
+
 
 @media (max-width: 992px) {
     .mt-6{

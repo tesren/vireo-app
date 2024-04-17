@@ -2,7 +2,7 @@
 
 @section('titles')
     <title>{{ __($unit->unitType->property_type) }} {{$unit->name}} - Virēo Living, El Tigre</title>
-    <meta name="description" content="{{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}m² {{__('ofrece')}} {{$unit->unitType->bedrooms}} {{__('recámaras y')}} {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}">
+    <meta name="description" content="{{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}{{__('m²')}} {{__('ofrece')}} {{$unit->unitType->bedrooms}} {{__('recámaras y')}} {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}">
 @endsection
 
 @section('content')
@@ -63,8 +63,11 @@
                 <h1 class="fs-1 mb-4 ">
                     {{ __($unit->unitType->property_type) }} {{$unit->name}}
                     <hr class="sand-hr my-2 w-50 mx-auto">
+
+                    @php $bedrooms = $unit->unitType->bedrooms @endphp
+
                     <div class="fs-3">
-                        {{ $unit->unitType->bedrooms }} {{__('Recámaras')}}
+                        {{ $bedrooms }} @if($bedrooms > 1) {{__('Recámaras')}}@else {{__('Recámara')}}@endif
                         @if($unit->unitType->flexrooms > 0) + Flex @endif
                         + {{ $unit->unitType->bathrooms }} {{__('Baños')}}
                     </div>
@@ -93,15 +96,16 @@
 
             <h2 class="fs-2">{{ __($unit->unitType->property_type) }} {{$unit->name}} - {{__('Torre')}} {{$unit->tower_name}}</h2>
             <p class="fs-5">
-                {{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}m² 
-                {{__('ofrece')}} {{$unit->unitType->bedrooms}} {{__('recámaras y')}} {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} 
+                {{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}{{__('m²')}} 
+                {{__('ofrece')}} {{$bedrooms}} @if($bedrooms > 1) {{__('recámaras y')}}@else {{__('recámara y')}}@endif 
+                {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} 
                 {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}.
             </p>
 
             <div class="d-flex justify-content-center justify-content-lg-start fs-5 mt-4">
 
                 <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Recámaras')}}">
-                    <i class="fa-solid fa-bed"></i> {{$unit->unitType->bedrooms}}@if($unit->unitType->flexrooms == 1).5 @endif
+                    <i class="fa-solid fa-bed"></i> {{$bedrooms}}@if($unit->unitType->flexrooms == 1).5 @endif
                 </div>
 
                 <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Baños')}}">
@@ -109,7 +113,7 @@
                 </div>
                 
                 <div class="me-3" data-bs-toggle="tooltip" data-bs-title="{{__('Área total')}}">
-                    <i class="fa-solid fa-house"></i> {{$unit->total_const}} m²
+                    <i class="fa-solid fa-house"></i> {{$unit->total_const}} {{__('m²')}}
                 </div>
             </div>
 
@@ -130,6 +134,102 @@
             @endif
 
         </div>
+    </div>
+
+    <div class="row bg-green py-5 justify-content-evenly">
+
+        {{-- Ubicacion en planta 
+        <div class="col-12 col-lg-5 p-4 p-lg-5 order-2 order-lg-1 bg-white align-self-center">
+
+            <h2 class="text-green mb-4">{{__('Ubicación en planta')}}</h2>
+            <img src="{{asset('img/unit-floors/unit-101-A.png')}}" alt="{{ __($unit->unitType->property_type) }} {{$unit->name}} - Virēo Living" class="w-100" data-fancybox="location">
+
+        </div>--}}
+
+        {{-- Planos --}}
+        <div class="col-12 col-lg-5 align-self-center order-1 order-lg-2">
+
+            @php
+                $blueprints = $unit->unitType->getMedia('blueprints');
+            @endphp
+
+            @if ( count($blueprints) > 1 )
+
+                <div id="carouselBlueprints" class="carousel slide">
+
+                    <div class="carousel-inner">
+
+                        @php $i=0; @endphp
+                        @foreach ($blueprints as $blueprint)
+                            <div class="carousel-item @if($i==0) active @endif">
+                                <img src="{{ $blueprint->getUrl('large') }}" class="d-block w-100" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint">
+                            </div>
+                            @php $i++; @endphp
+                        @endforeach
+                        
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+            @else
+                <img src="{{ $blueprints[0]->getUrl('large') }}" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint" class="w-100 mb-3">
+            @endif
+
+
+            <h4 class="text-center">{{__('Construcción total')}}: {{$unit->total_const}} {{__('m²')}}</h4>
+            <table class="table table-sand">
+                <tbody>
+
+                    <tr>
+                        <td>{{__('Interior')}}</td>
+                        <td>{{$unit->interior_const}} {{__('m²')}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{__('Terraza')}}</td>
+                        <td>{{$unit->exterior_const}} {{__('m²')}}</td>
+                    </tr>
+
+                    @isset($unit->extra_exterior_const)
+                        <tr>
+                            <td>{{__('Terraza Extra')}}</td>
+                            <td>{{$unit->extra_exterior_const}} {{__('m²')}}</td>
+                        </tr>
+                    @endisset
+
+                    <tr>
+                        <td>{{__('Estacionamiento')}}</td>
+                        <td>{{ number_format($unit->parking_area, 2) }} {{__('m²')}}</td>
+                    </tr>
+
+                    @isset($unit->storage_area)
+                        <tr>
+                            <td>{{__('Bodega')}}</td>
+                            <td>{{$unit->storage_area}} {{__('m²')}}</td>
+                        </tr>
+                    @endisset
+
+                    @isset($unit->garden_area)
+                        <tr>
+                            <td>{{__('Jardín')}}</td>
+                            <td>{{$unit->garden_area}} {{__('m²')}}</td>
+                        </tr>
+                    @endisset
+
+                </tbody>
+
+            </table>
+        </div>
+
     </div>
 
     <div class="row bg-green py-5 justify-content-evenly">
@@ -271,88 +371,56 @@
             </div>
         @endif
 
-        {{-- Planos --}}
-        <div class="col-12 col-lg-5 align-self-center order-1 order-lg-2">
+        {{-- Ubicacion en piso --}}
+        <div class="col-12 col-lg-5 align-self-center order-1 order-lg-2 mb-5 mb-lg-0">
+            <h4 class="fs-2 mb-3 text-center text-lg-start pt-4">{{__('Ubicación en Torre')}} {{$unit->tower_name}}</h4>
 
-            @php
-                $blueprints = $unit->unitType->getMedia('blueprints');
-            @endphp
+            <div class="position-relative mb-5">
 
-            @if ( count($blueprints) > 1 )
+                @if ($unit->tower_name == 'A')
+                    <img src="{{asset('/img/tower-a-numbers.png')}}" alt="Torre A - Virēo Living" class="w-100">
+                @elseif ($unit->tower_name == 'B')
+                    <img src="{{asset('/img/tower-b-numbers.png')}}" alt="Torre B - Virēo Living" class="w-100"> 
+                @endif
 
-                <div id="carouselBlueprints" class="carousel slide">
 
-                    <div class="carousel-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0" viewBox="0 0 1597 294">
+                    
+                    {{-- unidad marcada --}}
+                    <rect class="unit-sand" x="{{ $unit->shape->rect_x ?? '0' }}" y="{{ $unit->shape->rect_y ?? '0' }}" height="{{ $unit->shape->height ?? '0' }}" width="{{ $unit->shape->width ?? '0'}}"></rect>
+                            
+                    <text x="{{$unit->shape->text_x ?? 0;}}"
+                        y="{{($unit->shape->text_y + 10) ?? 0; }}"
+                        font-size="36" font-weight="bold" fill="#5B5942" class="fw-light">
 
-                        @php $i=0; @endphp
-                        @foreach ($blueprints as $blueprint)
-                            <div class="carousel-item @if($i==0) active @endif">
-                                <img src="{{ $blueprint->getUrl('large') }}" class="d-block w-100" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint">
-                            </div>
-                            @php $i++; @endphp
-                        @endforeach
-                        
-                    </div>
+                        <tspan class="text-decoration-underline">{{$unit->name}}</tspan>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                    </button>
+                    </text>
 
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                    </button>
+                </svg>
+            </div>
+
+            <h4 class="fs-2">{{__('Amenidades Comunes')}}</h4>
+            <p class="fs-6 mb-4">{{__('Disfruta de las amenidades exclusivas, que incluyen terraza pergolada, alberca de adultos y niños, pista de jogging, golf lounge y lobby. Además de las amenidades de primer nivel que ofrece la membresía social de El Tigre Golf & Country Club, así como acceso al club de playa.')}}</p>
+
+            <div class="row justify-content-evenly text-center fs-5 fw-light">
+                <div class="col-6 col-lg-4 mb-3">
+                    <i class="fa-solid fa-water-ladder"></i> {{__('Alberca')}}
                 </div>
-                
-            @else
-                <img src="{{ $blueprints[0]->getUrl('large') }}" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint" class="w-100 mb-3">
-            @endif
+                <div class="col-6 col-lg-4 mb-3">
+                    <i class="fa-solid fa-golf-ball-tee"></i> {{__('Golf Lounge')}}
+                </div>
+                <div class="col-6 col-lg-4 mb-3">
+                    <i class="fa-solid fa-person-running"></i> {{__('Pista de Jogging')}}
+                </div>
+                <div class="col-6 col-lg-4 mb-3">
+                    <i class="fa-solid fa-bell-concierge"></i> {{__('Lobby Principal')}}
+                </div>
+                <div class="col-12 col-lg-5 mb-3">
+                    <i class="fa-solid fa-people-roof"></i> {{__('Terraza pergolada')}}
+                </div>
+            </div>
 
-
-            <h4 class="text-center">{{__('Construcción total')}}: {{$unit->total_const}} m²</h4>
-            <table class="table table-sand">
-                <tbody>
-
-                    <tr>
-                        <td>{{__('Interior')}}</td>
-                        <td>{{$unit->interior_const}} m²</td>
-                    </tr>
-
-                    <tr>
-                        <td>{{__('Terraza')}}</td>
-                        <td>{{$unit->exterior_const}} m²</td>
-                    </tr>
-
-                    @isset($unit->extra_exterior_const)
-                        <tr>
-                            <td>{{__('Terraza Extra')}}</td>
-                            <td>{{$unit->extra_exterior_const}} m²</td>
-                        </tr>
-                    @endisset
-
-                    <tr>
-                        <td>{{__('Estacionamiento')}}</td>
-                        <td>{{ number_format($unit->parking_area, 2) }} m²</td>
-                    </tr>
-
-                    @isset($unit->storage_area)
-                        <tr>
-                            <td>{{__('Bodega')}}</td>
-                            <td>{{$unit->storage_area}} m²</td>
-                        </tr>
-                    @endisset
-
-                    @isset($unit->garden_area)
-                        <tr>
-                            <td>{{__('Jardín')}}</td>
-                            <td>{{$unit->garden_area}} m²</td>
-                        </tr>
-                    @endisset
-
-                </tbody>
-
-            </table>
         </div>
 
     </div>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Nova\Unit;
 use App\Nova\User;
+use App\Nova\Shape;
 use App\Nova\Message;
 use App\Nova\UnitType;
 use Laravel\Nova\Nova;
@@ -38,6 +39,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::resource(PaymentPlan::class)->icon('currency-dollar'),
                 MenuSection::resource(Message::class)->icon('inbox-in'),
                 MenuSection::resource(ConstructionUpdate::class)->icon('camera'),
+                MenuSection::resource(Shape::class)->icon('cube'),
                 MenuSection::resource(User::class)->icon('user'),
 
             ];

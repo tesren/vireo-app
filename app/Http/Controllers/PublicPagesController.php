@@ -221,4 +221,12 @@ class PublicPagesController extends Controller
 
         return view('inventory', compact('units'));
     }
+
+    public function graphicInventory(){
+        $towerA_units = Unit::where('tower_name', 'A')->get();
+        $towerB_units = Unit::where('tower_name', 'B')->get();
+        $units = Unit::all();
+        
+        return view('graphic-inventory', compact('towerA_units', 'towerB_units', 'units'));
+    }
 }

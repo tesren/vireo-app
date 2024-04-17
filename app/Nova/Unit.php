@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Nova\View;
+use App\Nova\Shape;
 use Laravel\Nova\Panel;
 use App\Nova\PaymentPlan;
 use Laravel\Nova\Fields\ID;
@@ -10,18 +11,18 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Tag;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Badge;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\FormData;
+use App\Nova\Actions\ChangeStatus;
 use Laravel\Nova\Fields\BelongsTo;
 use App\Nova\Actions\ChangeUnitView;
 use Laravel\Nova\Fields\BelongsToMany;
 use App\Nova\Actions\AssignPaymentPlan;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Image;
-use App\Nova\Actions\ChangeStatus;
-use Laravel\Nova\Fields\FormData;
 
 class Unit extends Resource
 {
@@ -33,7 +34,7 @@ class Unit extends Resource
     public static $model = \App\Models\Unit::class;
 
     public function title(){
-        return 'Unidad '.$this->name;
+        return 'Unidad '.$this->name.'-'.$this->tower_name;
     }
 
     /**
@@ -71,7 +72,12 @@ class Unit extends Resource
         return [
             ID::make()->sortable()->hideFromDetail()->hideFromIndex(),
 
-            Text::make('Unidad', 'name')->rules('required', 'max:50', 'regex:/^[A-Za-z0-9\s]+$/')->sortable()->placeholder('Nombre o número de la unidad'),
+            Text::make('Unidad', 'name')->rules('required', 'max:50', 'regex:/^[A-Za-z0-9\s]+$/')->sortable()->placeholder('Nombre o número de la unidad')
+            ->displayUsing(
+                function($value){
+                    return $value.'-'.$this->tower_name;
+                }
+            ),
 
             BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable(),
 
@@ -111,6 +117,8 @@ class Unit extends Resource
             Tag::make('Planes de pago', 'paymentPlans', PaymentPlan::class)->hideFromIndex(),
 
             Panel::make('Medidas', $this->sizesFields()),
+
+            HasOne::make('Polígono', 'shape', Shape::class),
      ];
     }
 

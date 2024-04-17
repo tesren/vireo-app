@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Image\Manipulations;
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Image\Manipulations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
@@ -31,6 +32,99 @@ class Unit extends Model
     public function unitType()
     {
         return $this->belongsTo(UnitType::class, 'unit_type_id');
+    }
+
+    /**
+     * Get the shape associated with the Unit
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function shape()
+    {
+        return $this->hasOne(Shape::class);
+    }
+
+    protected function getInteriorConstAttribute($value)
+    {
+        if (App::isLocale('en')) {
+            return (round($value * 10.764, 2));
+        }else{
+            return $value;
+        }
+    }
+
+    protected function getExteriorConstAttribute($value)
+    {
+        if (App::isLocale('en')) {
+            return (round($value * 10.764, 2));
+        }else{
+            return $value;
+        }
+    }
+
+    protected function getExtraExteriorConstAttribute($value)
+    {
+        if( isset($value) ){
+            if (App::isLocale('en')) {
+                return (round($value * 10.764, 2));
+            }else{
+                return $value;
+            }
+        }
+        else{
+            return null;
+        }
+    }
+
+    protected function getParkingAreaAttribute($value)
+    {
+        if( isset($value) ){
+            if (App::isLocale('en')) {
+                return (round($value * 10.764, 2));
+            }else{
+                return $value;
+            }
+        }
+        else{
+            return null;
+        }
+    }
+
+    protected function getStorageAreaAttribute($value)
+    {
+        if( isset($value) ){
+            if (App::isLocale('en')) {
+                return (round($value * 10.764, 2));
+            }else{
+                return $value;
+            }
+        }
+        else{
+            return null;
+        }
+    }
+
+    protected function getGardenAreaAttribute($value)
+    {
+        if( isset($value) ){
+            if (App::isLocale('en')) {
+                return (round($value * 10.764, 2));
+            }else{
+                return $value;
+            }
+        }
+        else{
+            return null;
+        }
+    }
+
+    protected function getTotalConstAttribute($value)
+    {
+        if (App::isLocale('en')) {
+            return (round($value * 10.764, 2));
+        }else{
+            return $value;
+        }
     }
 
 }

@@ -41,16 +41,15 @@
 
     </div>
 
-    {{-- Simbología --}}
-    <div class="fs-5 d-flex justify-content-center text-center my-4">
-        <div class="me-2 me-lg-4">{{__('Simbología')}}</div>
-        <div class="badge bg-success rounded-pill fw-light me-2 me-lg-3 align-self-center">{{__('Disponible')}}</div>
-        <div class="badge bg-warning rounded-pill fw-light me-2 me-lg-3 align-self-center">{{__('Apartada')}}</div>
-        <div class="badge bg-danger rounded-pill fw-light me-3 align-self-center">{{__('Vendida')}}</div>
-    </div>
+    @include('components.simbology')
 
     {{-- Formulario de búsqueda --}}
     @include('components.searchform')
+
+    <div class="container input-group justify-content-end mb-4 text-end">
+        <a href="{{route('graphic.inventory')}}" class="btn btn-outline-green rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
+        <a href="{{route('inventory')}}" class="btn btn-outline-green rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
+    </div>
 
     {{-- Condominios --}}
     @if($units->isNotEmpty())
@@ -109,14 +108,19 @@
 
                         <div class="card-body text-green">
                             <h3 class="card-title fs-5">{{__($unit->unitType->property_type)}} {{$unit->name}} - {{__('Torre')}} {{$unit->tower_name}}</h3>
+
+                            @php
+                                $bedrooms = $unit->unitType->bedrooms;
+                            @endphp
+
                             <p class="card-text fs-7">
-                                {{__($unit->unitType->property_type)}} {{__('con')}} {{$unit->unitType->bedrooms}} {{__('recámaras')}}, {{$unit->unitType->bathrooms}} {{__('baños y un área total de')}} 
-                                {{$unit->total_const}} m², {{__('ubicado en el piso')}} {{$unit->floor}} {{__('de la Torre')}} {{$unit->tower_name}}.
+                                {{__($unit->unitType->property_type)}} {{__('con')}} {{$bedrooms}} @if($bedrooms>1) {{__('recámaras')}}@else {{__('recámara')}}@endif, {{$unit->unitType->bathrooms}} 
+                                {{__('baños y un área total de')}} {{$unit->total_const}} {{__('m²')}}, {{__('ubicado en el piso')}} {{$unit->floor}} {{__('de la Torre')}} {{$unit->tower_name}}.
                             </p>
 
                             <div class="d-flex fs-5 justify-content-center fw-light">
                                 <div class="me-3">
-                                    <i class="fa-solid fa-bed"></i> {{$unit->unitType->bedrooms}}
+                                    <i class="fa-solid fa-bed"></i> {{$bedrooms}}
                                 </div>
 
                                 <div class="me-3">
@@ -124,7 +128,7 @@
                                 </div>
 
                                 <div>
-                                    <i class="fa-solid fa-house"></i> {{number_format($unit->total_const, 2)}} m²
+                                    <i class="fa-solid fa-house"></i> {{number_format($unit->total_const, 2)}} {{__('m²')}}
                                 </div>
                             </div>
                         </div>
@@ -197,7 +201,7 @@
                             <h3 class="card-title fs-5">{{__($unit->unitType->property_type)}} {{$unit->name}} - {{__('Torre')}} {{$unit->tower_name}}</h3>
                             <p class="card-text fs-7">
                                 {{__($unit->unitType->property_type)}} {{__('con')}} {{$unit->unitType->bedrooms}} {{__('recámaras')}}, {{$unit->unitType->bathrooms}} {{__('baños y un área total de')}} 
-                                {{$unit->total_const}} m², {{__('ubicado en el piso')}} {{$unit->floor}} {{__('de la Torre')}} {{$unit->tower_name}}.
+                                {{$unit->total_const}} {{__('m²')}}, {{__('ubicado en el piso')}} {{$unit->floor}} {{__('de la Torre')}} {{$unit->tower_name}}.
                             </p>
 
                             <div class="d-flex fs-5 justify-content-center fw-light">
@@ -210,7 +214,7 @@
                                 </div>
 
                                 <div>
-                                    <i class="fa-solid fa-house"></i> {{number_format($unit->total_const, 2)}} m²
+                                    <i class="fa-solid fa-house"></i> {{number_format($unit->total_const, 2)}} {{__('m²')}}
                                 </div>
                             </div>
                         </div>

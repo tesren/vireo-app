@@ -20,7 +20,7 @@
         <h1 class="fs-2 mb-4">
           {{__('Condominios de 1, 2 y 3 recámaras')}} <br> {{__('y 4 Villas Exclusivas')}}
         </h1>
-        <a href="{{ route('inventory', request()->query() ) }}" class="btn btn-sand rounded-0 fs-5 shadow-7">{{__('Ver Inventario')}}</a>
+        <a href="{{ route('graphic.inventory', request()->query() ) }}" class="btn btn-sand rounded-0 fs-5 shadow-7">{{__('Ver Inventario')}}</a>
       </div>
     </div>
   
@@ -34,8 +34,8 @@
 
     <div class="col-12 col-lg-5 align-self-center mb-4 mb-lg-0 text-center text-lg-start">
       <h2 class="fs-2">{{__('Sobre el Proyecto')}}</h2>
-      <p>{{__('Descubre un estilo de vida privilegiado en Nuevo Vallarta, Nayarit, con la preventa exclusiva de Virēo Living, ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club.Condominios de una, dos y tres recámaras y Villas de cuatro recámaras, Virēo Living ofrece opciones para todos los gustos y necesidades.')}}</p>
-      <a href="{{ route('inventory', request()->query() ) }}" class="btn btn-sand fs-5 rounded-0 shadow-7">{{__('Ver Inventario')}}</a>    
+      <p>{{__('Descubre un estilo de vida privilegiado en Nuevo Vallarta, Nayarit, con la preventa exclusiva de Virēo Living, ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club. Condominios de una, dos y tres recámaras y Villas de cuatro recámaras, Virēo Living ofrece opciones para todos los gustos y necesidades.')}}</p>
+      <a href="{{ route('graphic.inventory', request()->query() ) }}" class="btn btn-sand fs-5 rounded-0 shadow-7">{{__('Ver Inventario')}}</a>    
     </div>
 
     <div class="col-12 col-lg-5">
