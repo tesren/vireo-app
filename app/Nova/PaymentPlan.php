@@ -2,11 +2,12 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PaymentPlan extends Resource
 {
@@ -97,7 +98,11 @@ class PaymentPlan extends Resource
                 }
             ),
 
-            Number::make('Pago final', 'closing_payment')->min(0)->max(100)->placeholder('Porcentaje del Pago ginal')->rules('required')->sortable()->displayUsing(
+            Number::make('Pagos Mensuales', 'months_amount')->min(0)->max(200)->hideFromIndex()->help('Ingresa la cantidad de meses'),
+
+            Boolean::make('Durante la Construcción', 'during_const')->default(0)->nullable()->hideFromIndex(),
+
+            Number::make('Pago final', 'closing_payment')->min(0)->max(100)->placeholder('Porcentaje del Pago final')->rules('required')->sortable()->displayUsing(
                 function($value){
                     return $value.'%';
                 }

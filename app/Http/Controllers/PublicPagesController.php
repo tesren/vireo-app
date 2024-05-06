@@ -46,13 +46,13 @@ class PublicPagesController extends Controller
             $plan_id = $request->input('down_plan_id');
 
             //para el webhook
-            $type = "Contacto desde el sitio web de Caza Mabó";
+            $type = "Contacto desde el sitio web de Virēo living";
 
             if( isset($contact_pref) ){
                 $msg->ap_time = $ap_time;
                 $msg->ap_date = $ap_date;
                 $msg->contact_pref = $contact_pref;
-                $type = 'El cliente dejó sus datos y está interesado en una cita en Caza Mabó el día '.$ap_date.' a las '.$ap_time;  
+                $type = 'El cliente dejó sus datos y está interesado en una cita en Virēo Living el día '.$ap_date.' a las '.$ap_time;  
             }
             
             //solo landing page de cotizador

@@ -118,6 +118,8 @@ class Unit extends Resource
 
             Panel::make('Medidas', $this->sizesFields()),
 
+            Panel::make('Planos', $this->imgFields()),
+
             HasOne::make('Polígono', 'shape', Shape::class),
      ];
     }
@@ -203,6 +205,19 @@ class Unit extends Resource
                     $field->default(round($total_meters, 2));
                 }
             ),
+        ];
+    }
+
+    /**
+     * Get the sizes fields for the resource.
+     *
+     * @return array
+     */
+    protected function imgFields()
+    {
+        return [
+            Image::make('Ubicación en planta', 'location_img_path')->disk('media')->maxWidth(300)->hideFromIndex(),
+            Image::make('Planos de la Unidad', 'blueprint_path')->disk('media')->maxWidth(300)->hideFromIndex(),
         ];
     }
 

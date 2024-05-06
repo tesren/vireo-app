@@ -2,7 +2,7 @@
 
 @section('titles')
     <title>{{ __($unit->unitType->property_type) }} {{$unit->name}} - Virēo Living, El Tigre</title>
-    <meta name="description" content="{{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}{{__('m²')}} {{__('ofrece')}} {{$unit->unitType->bedrooms}} {{__('recámaras y')}} {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}">
+    <meta name="description" content="@if ( $unit->unitType->property_type == 'Villa' ) {{__('Descubre esta exclusiva villa en venta en El Tigre dentro de Virēo Living. Esta espaciosa villa de')}} @else {{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} @endif {{$unit->total_const}}{{__('m²')}} {{__('ofrece')}} {{$unit->unitType->bedrooms}} {{__('recámaras y')}} {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}">
 @endsection
 
 @section('content')
@@ -96,7 +96,14 @@
 
             <h2 class="fs-2">{{ __($unit->unitType->property_type) }} {{$unit->name}} - {{__('Torre')}} {{$unit->tower_name}}</h2>
             <p class="fs-5">
-                {{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} {{$unit->total_const}}{{__('m²')}} 
+
+                @if ( $unit->unitType->property_type == 'Villa' )
+                    {{__('Descubre esta exclusiva villa en venta en El Tigre dentro de Virēo Living. Esta espaciosa villa de')}} 
+                @else
+                    {{__('Descubre este exclusivo condominio en venta en El Tigre dentro de Virēo Living. Este espacioso condominio de')}} 
+                @endif
+
+                {{$unit->total_const}} {{__('m²')}} 
                 {{__('ofrece')}} {{$bedrooms}} @if($bedrooms > 1) {{__('recámaras y')}}@else {{__('recámara y')}}@endif 
                 {{$unit->unitType->bathrooms}} {{__('baños, perfecto para una vida moderna y relajada. Situado en el nivel')}} 
                 {{ $unit->floor }} {{__('de la Torre')}} {{ $unit->tower_name }}.
@@ -138,13 +145,15 @@
 
     <div class="row bg-green py-5 justify-content-evenly">
 
-        {{-- Ubicacion en planta 
-        <div class="col-12 col-lg-5 p-4 p-lg-5 order-2 order-lg-1 bg-white align-self-center">
+        {{-- Ubicacion en planta --}}
+        @if ($unit->location_img_path)
+            <div class="col-12 col-lg-5 p-4 p-lg-5 order-2 order-lg-1 bg-white align-self-center">
 
-            <h2 class="text-green mb-4">{{__('Ubicación en planta')}}</h2>
-            <img src="{{asset('img/unit-floors/unit-101-A.png')}}" alt="{{ __($unit->unitType->property_type) }} {{$unit->name}} - Virēo Living" class="w-100" data-fancybox="location">
+                <h2 class="text-green mb-4">{{__('Ubicación en planta')}}</h2>
+                <img src="{{asset( 'media/'.$unit->location_img_path )}}" alt="{{ __($unit->unitType->property_type) }} {{$unit->name}} - Virēo Living" class="w-100" data-fancybox="location">
 
-        </div>--}}
+            </div>
+        @endif
 
         {{-- Planos --}}
         <div class="col-12 col-lg-5 align-self-center order-1 order-lg-2">
@@ -153,7 +162,7 @@
                 $blueprints = $unit->unitType->getMedia('blueprints');
             @endphp
 
-            @if ( count($blueprints) > 1 )
+            @if ( count($blueprints) > 0 )
 
                 <div id="carouselBlueprints" class="carousel slide">
 
@@ -166,22 +175,29 @@
                             </div>
                             @php $i++; @endphp
                         @endforeach
+
+                        @isset($unit->blueprint_path)
+                            <div class="carousel-item">
+                                <img src="{{ asset('media/'.$unit->blueprint_path) }}" class="d-block col-12 col-lg-7 col-xxl-6 mx-auto" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint">
+                            </div>
+                        @endisset
                         
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                    </button>
+                    @if( count($blueprints) > 1 or isset($unit->blueprint_path) )
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
 
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                    </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselBlueprints" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    @endif
+
                 </div>
                 
-            @else
-                <img src="{{ $blueprints[0]->getUrl('large') }}" alt="{{'Planos'}} {{ $unit->unitType->property_type }} {{$unit->name}} - Virēo Living, El Tigre" data-fancybox="blueprint" class="w-100 mb-3">
             @endif
 
 
@@ -332,7 +348,12 @@
                                 
                                 @isset($plan->months_percent)
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">{{__('Mensualidades')}} ({{$plan->months_percent}}%)</div>
+                                        <div class="fs-4">
+                                            {{$plan->months_amount}} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
+                                            @if ($plan->during_const)
+                                                <div class="fs-7 fw-light d-none d-lg-block">{{$plan->months_amount}} {{__('Pagos mensuales durante la construcción')}}.</div>
+                                            @endif
+                                        </div>
                                         <div class="fs-4">${{ number_format( $final_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
