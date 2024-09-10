@@ -34,7 +34,7 @@ class Unit extends Resource
     public static $model = \App\Models\Unit::class;
 
     public function title(){
-        return 'Unidad '.$this->name.'-'.$this->tower_name;
+        return 'Unidad '.$this->name;
     }
 
     /**
@@ -72,12 +72,7 @@ class Unit extends Resource
         return [
             ID::make()->sortable()->hideFromDetail()->hideFromIndex(),
 
-            Text::make('Unidad', 'name')->rules('required', 'max:50', 'regex:/^[A-Za-z0-9\s]+$/')->sortable()->placeholder('Nombre o número de la unidad')
-            ->displayUsing(
-                function($value){
-                    return $value.'-'.$this->tower_name;
-                }
-            ),
+            Text::make('Unidad', 'name')->rules('required', 'max:50')->sortable()->placeholder('Nombre o número de la unidad'),
 
             BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable(),
 

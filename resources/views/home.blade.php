@@ -37,7 +37,7 @@
       <p>{{__('Descubre un estilo de vida privilegiado en Nuevo Vallarta, Nayarit, con la preventa exclusiva de Virēo Living, ubicado estratégicamente en Paseo de las Garzas #291, frente al hoyo #5 del prestigioso campo de golf El Tigre Golf & Country Club. Condominios de una, dos y tres recámaras y Villas de cuatro recámaras, Virēo Living ofrece opciones para todos los gustos y necesidades.')}}</p>
       <a href="{{ route('graphic.inventory', request()->query() ) }}" class="btn btn-sand fs-5 rounded-0 shadow-7">{{__('Ver Inventario')}}</a>    
     </div>
-
+    
     <div class="col-12 col-lg-5">
       <img src="{{asset('img/interiors-home.webp')}}" alt="Interiores de Virēo Living ElTigre" class="w-100 shadow-7" loading="lazy">
     </div>

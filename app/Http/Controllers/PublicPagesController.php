@@ -136,9 +136,9 @@ class PublicPagesController extends Controller
         return view('inventory', compact('units'));
     }
 
-    public function unit($property_type, $name, $tower){
+    public function unit($tower, $property_type, $name){
 
-        $unit = Unit::where('name', $name)->where('tower_name', $tower)->first();
+        $unit = Unit::where('tower_name', $tower)->where('name', 'like', $name)->firstOrFail();
 
         return view('unit', compact('unit'));
     }
@@ -149,7 +149,7 @@ class PublicPagesController extends Controller
 
     public function construction(){
 
-        $const_updates = ConstructionUpdate::all();
+        $const_updates = ConstructionUpdate::orderByDesc('date')->get();
 
         return view('construction', compact('const_updates'));
     }

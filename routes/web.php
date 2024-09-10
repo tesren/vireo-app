@@ -29,7 +29,7 @@ Route::localized(function () {
     Route::get( Lang::uri('/condominios-y-villas-en-venta'), [PublicPagesController::class, 'inventory'])->name('inventory');
     Route::get( Lang::uri('/condominios-en-venta'), [PublicPagesController::class, 'condos'])->name('condos');
     Route::get( Lang::uri('/villas-en-venta'), [PublicPagesController::class, 'villas'])->name('villas');
-    Route::get( Lang::uri('/propiedad-en-venta-en-el-tigre').'/{property_type}-{name}-{tower}', [PublicPagesController::class, 'unit'])->name('unit');
+    Route::get( Lang::uri('/propiedad-en-venta-en-el-tigre/torre').'-{tower}/{property_type}-{name}', [PublicPagesController::class, 'unit'])->name('unit');
     Route::get( Lang::uri('/busqueda'), [PublicPagesController::class, 'search'])->name('search');
     Route::get( Lang::uri('/contacto') , [PublicPagesController::class, 'contact'])->name('contact');
     Route::get( Lang::uri('/avances-de-obra') , [PublicPagesController::class, 'construction'])->name('construction');
@@ -38,6 +38,8 @@ Route::localized(function () {
     Route::get( Lang::uri('/aviso-de-privacidad'), function () { return view('privacy-policy');} )->name('privacy');
 
 });
+
+Route::redirect('/login', '/nova/login', 302);
 
 Route::post('/send-message', [ PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);
 

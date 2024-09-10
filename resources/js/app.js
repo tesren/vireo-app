@@ -9,13 +9,17 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 document.addEventListener("DOMContentLoaded", function() {
     var whatsappLink = document.getElementById('whatsapp');
-    var tooltip = new bootstrap.Tooltip(whatsappLink, {
-        trigger: 'manual', // Activamos el tooltip manualmente
-        placement: 'left' // Colocación del tooltip
-    });
+
+    if(whatsappLink){
+        var tooltip = new bootstrap.Tooltip(whatsappLink, {
+            trigger: 'manual', // Activamos el tooltip manualmente
+            placement: 'left' // Colocación del tooltip
+        });
+        
+        // Mostramos el tooltip
+        tooltip.show();
+    }
     
-    // Mostramos el tooltip
-    tooltip.show();
 });
 
 const form_inputs = document.getElementById('search_input_group');

@@ -11,6 +11,6 @@ return [
     '/villas-en-venta' => '/villas-en-venta',
     '/condominios-en-venta' => '/condominios-en-venta',
     '/condominios-y-villas-en-venta' => '/condominios-y-villas-en-venta',
-    '/propiedad-en-venta-en-el-tigre' => '/propiedad-en-venta-en-el-tigre',
+    '/propiedad-en-venta-en-el-tigre/torre' => '/propiedad-en-venta-en-el-tigre/torre',
     '/inventario-grafico' => '/inventario-grafico'
 ];

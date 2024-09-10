@@ -47,8 +47,8 @@
     @include('components.searchform')
 
     <div class="container input-group justify-content-end mb-4 text-end">
-        <a href="{{route('graphic.inventory')}}" class="btn btn-outline-green rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
-        <a href="{{route('inventory')}}" class="btn btn-outline-green rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
+        <a href="{{route('graphic.inventory', request()->query() )}}" class="btn btn-outline-green rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
+        <a href="{{route('inventory', request()->query() )}}" class="btn btn-outline-green rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
     </div>
 
     {{-- Condominios --}}
@@ -91,7 +91,7 @@
                     }
                 @endphp
 
-                <a href="{{ route('unit', ['name'=>$unit->name, 'property_type'=>$unit->unitType->property_type, 'tower'=>$unit->tower_name ]) }}" class="col-12 col-lg-4 text-decoration-none mb-4 mb-lg-5">
+                <a href="{{ route('unit', ['name'=>$unit->name, 'property_type'=>$unit->unitType->property_type, 'tower'=>$unit->tower_name, 'contact' => request()->query('contact') ]) }}" class="col-12 col-lg-4 text-decoration-none mb-4 mb-lg-5">
 
                     <div class="card w-100 shadow-4 rounded-0 position-relative">
 
@@ -180,7 +180,7 @@
                     }
                 @endphp
 
-                <a href="{{ route('unit', ['name'=>$unit->name, 'property_type'=>$unit->unitType->property_type, 'tower'=>$unit->tower_name ] ) }}" class="col-12 col-lg-4 text-decoration-none mb-3 mb-lg-5">
+                <a href="{{ route('unit', ['name'=>$unit->name, 'property_type'=>$unit->unitType->property_type, 'tower'=>$unit->tower_name, 'contact' => request()->query('contact') ] ) }}" class="col-12 col-lg-4 text-decoration-none mb-3 mb-lg-5">
 
                     <div class="card w-100 shadow-4 rounded-0 position-relative">
 

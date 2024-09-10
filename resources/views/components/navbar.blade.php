@@ -1,7 +1,7 @@
 <nav class="navbar bg-nav-blurred fixed-top navbar-expand-xl navbar-dark">
     <div class="container-fluid px-2 px-lg-5">
 
-      <a class="navbar-brand" href="{{route('home')}}">
+      <a class="navbar-brand" href="{{route('home', request()->query())}}">
         <img width="160px" src="{{asset('/img/vire-logo-nav.webp')}}" alt="Logo de Virēo Living - El Tigre">
       </a>
 
@@ -24,7 +24,7 @@
             </li>
 
             <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
-              <a class="nav-link" href="{{route('home')}}">{{__('Inicio')}}</a>
+              <a class="nav-link" href="{{route('home', request()->query())}}">{{__('Inicio')}}</a>
             </li>
 
             <li class="nav-item dropdown me-0 me-lg-5 mb-2 mb-lg-0">
@@ -32,28 +32,32 @@
                 {{__('Inventario')}}
               </a>
               <ul class="dropdown-menu bg-sand">
-                <li><a class="dropdown-item" href="{{route('condos')}}">{{__('Condominios')}}</a></li>
-                <li><a class="dropdown-item" href="{{route('villas')}}">{{__('Villas')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('condos', request()->query())}}">{{__('Condominios')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('villas', request()->query())}}">{{__('Villas')}}</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="{{route('graphic.inventory')}}">{{__('Ver todo')}}</a></li>
+                <li><a class="dropdown-item" href="{{route('graphic.inventory', request()->query())}}">{{__('Ver todo')}}</a></li>
               </ul>
             </li>
 
             @php
               $const_updates = App\Models\ConstructionUpdate::all();
+              $contact = request()->query('contact');
             @endphp
 
             @if ( count($const_updates) > 0 )
               <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
-                <a class="nav-link" href="{{ route('construction') }}">{{__('Avance de Obra')}}</a>
+                <a class="nav-link" href="{{ route('construction', request()->query()) }}">{{__('Avance de Obra')}}</a>
               </li>
             @endif
 
-            <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
-              <a class="nav-link" href="{{ route('contact') }}">{{__('Contacto')}}</a>
-            </li>
+            @if ($contact != 'no')
+              <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
+                <a class="nav-link" href="{{ route('contact', request()->query() ) }}">{{__('Contacto')}}</a>
+              </li>
+            @endif
+            
 
             <li class="nav-item me-0 me-lg-5 mb-2 mb-lg-0">
 

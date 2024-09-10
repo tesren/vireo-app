@@ -1,3 +1,7 @@
+@php
+    $contact = request()->query('contact');
+@endphp
+
 <footer class="container-fluid bg-green py-4 py-lg-5">
 
     <div class="row justify-content-evenly">
@@ -7,10 +11,13 @@
         </div>
 
         <div class="col-11 col-lg-3 align-self-center mb-4 mb-lg-0">
-            <h6 class="fs-3">{{__('Contacto')}}</h6>
+            @if ($contact != 'no')
+                <h6 class="fs-3">{{__('Contacto')}}</h6>
 
-            <a href="mailto:info@domusvallarta.com" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
-            <a href="tel:+523322005523" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> 332 200 5523</a>
+                <a href="mailto:info@domusvallarta.com" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
+                <a href="tel:+523322005523" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> 332 200 5523</a>
+            @endif
+
             <address class="fs-5"><i class="fa-solid fa-location-dot"></i> P.º de las Garzas 291, El Tigre, 63735 Nuevo Vallarta, Nay.</address>
         </div>
 
@@ -20,15 +27,18 @@
                 <img src="{{asset('img/domus-logo-white.svg')}}" alt="Logo de Domus Vallarta Inmobiliaria" class="w-100">
             </a>
 
-            <div class="d-flex justify-content-center mt-3">
-                <a href="https://www.instagram.com/vireo.living/" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-sand me-3 fs-4">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+            @if ($contact != 'no')
+                <div class="d-flex justify-content-center mt-3">
+                    <a href="https://www.instagram.com/vireo.living/" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-sand me-3 fs-4">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
 
-                <a href="https://www.facebook.com/vireoliving.eltigre" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-sand fs-4">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-            </div>
+                    <a href="https://www.facebook.com/vireoliving.eltigre" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-sand fs-4">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            @endif
+
         </div>
 
     </div>

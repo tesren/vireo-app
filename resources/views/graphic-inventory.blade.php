@@ -37,8 +37,8 @@
 
     
     <div class="container input-group justify-content-end mb-4 text-end">
-        <a href="{{route('graphic.inventory')}}" class="btn btn-outline-green rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
-        <a href="{{route('inventory')}}" class="btn btn-outline-green rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
+        <a href="{{route('graphic.inventory', request()->query() )}}" class="btn btn-outline-green rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
+        <a href="{{route('inventory', request()->query() )}}" class="btn btn-outline-green rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
     </div>
 
     {{-- Torre A --}}
@@ -71,7 +71,7 @@
                     
                     <text x="{{$unit->shape->text_x ?? 0;}}"
                         y="{{$unit->shape->text_y ?? 0; }}"
-                        font-size="32" font-weight="bold" fill="#fff" class="fw-light">
+                        font-size="24" font-weight="bold" fill="#fff" class="fw-light">
 
                         <tspan class="text-decoration-underline">{{$unit->name}}</tspan>
 
@@ -121,12 +121,12 @@
                     
                     <text x="{{$unit->shape->text_x ?? 0;}}"
                         y="{{$unit->shape->text_y ?? 0; }}"
-                        font-size="32" font-weight="bold" fill="#fff" class="fw-light">
+                        font-size="20" font-weight="bold" fill="#fff" class="fw-light">
 
                         <tspan class="text-decoration-underline">{{$unit->name}}</tspan>
 
                         @php
-                            if ( $unit->unit_type_id == 4 ) {
+                            if ( $unit->unit_type_id == 4 or $unit->unit_type_id == 8 ) {
                                 $type_x = ($unit->shape->text_x ?? 0) - 18;
                             } else {
                                 $type_x = ($unit->shape->text_x ?? 0) - 25;
@@ -134,7 +134,7 @@
                             
                         @endphp
 
-                        <tspan x="{{$type_x}}" dy="1.3em" font-size="15" font-weight="light">
+                        <tspan x="{{$type_x}}" dy="1.3em" font-size="14" font-weight="light">
                             {{ $unit->unitType->bedrooms }}
                             @if($unit->unitType->flexrooms > 0).5 @endif
                             {{__('REC')}}
@@ -193,7 +193,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-green" data-bs-dismiss="modal">{{__('Cerrar')}}</button>
-                        <a href="{{route('unit', ['name'=>$unit->name, 'property_type'=>$unit->unitType->property_type, 'tower'=>$unit->tower_name ] )}}" class="btn btn-green">{{__('Más información')}}</a>
+                        <a href="{{route('unit', ['name'=>$unit->name, 'property_type'=>$unit->unitType->property_type, 'tower'=>$unit->tower_name, 'contact' => request()->query('contact') ] )}}" class="btn btn-green">{{__('Más información')}}</a>
                     </div>
                 </div>
 
