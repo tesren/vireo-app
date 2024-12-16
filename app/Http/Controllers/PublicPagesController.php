@@ -151,7 +151,11 @@ class PublicPagesController extends Controller
 
         $const_updates = ConstructionUpdate::orderByDesc('date')->get();
 
-        return view('construction', compact('const_updates'));
+        $latest_update = ConstructionUpdate::latest()->first();
+
+        $latest_img = $latest_update->portrait_path;
+
+        return view('construction', compact('const_updates', 'latest_img'));
     }
 
     public function search(Request $request){

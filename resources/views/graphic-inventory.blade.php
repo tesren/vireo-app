@@ -57,7 +57,7 @@
             <text x="670" y="200" font-size="26" font-weight="bold" fill="#5B5942" class="fw-light">
 
                 <tspan class="text-decoration-underline">
-                    {{__('Lounge Lobby')}}
+                    {{__('Golf Lounge')}}
                 </tspan>
                 
             </text>

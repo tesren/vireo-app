@@ -3,6 +3,8 @@
 @section('titles')
     <title>{{__('Avances de Obra')}} - Virēo Living, El Tigre</title>
     <meta name="description" content="{{__('Avances mensuales de obra de Virēo Living en Nuevo Vallarta, Nayarit! Descubre nuestro progreso a través de imágenes y videos actualizados regularmente. Desde la construcción de nuestras exclusivas amenidades hasta la evolución de las residencias, te invitamos a seguir de cerca nuestro desarrollo. Sumérgete en la experiencia Virēo Living y vislumbra tu futuro hogar en uno de los destinos más privilegiados de México. ¡No te pierdas ningún detalle de nuestra transformación!')}}">
+    <meta property="og:image"       content="{{asset('media/'.$latest_img)}}" />
+    <meta property="og:image:secure_url"       content="{{asset('media/'.$latest_img)}}" />
 @endsection
 
 @section('content')

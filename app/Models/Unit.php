@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Observers\UnitObserver;
 use Spatie\Image\Manipulations;
 use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
 
+#[ObservedBy([UnitObserver::class])]
 class Unit extends Model
 {
     use HasFactory, SoftDeletes;
