@@ -72,6 +72,10 @@
                         + {{ $unit->unitType->bathrooms }} {{__('Baños')}}
                     </div>
                 </h1>
+
+                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="btn btn-blurred fs-4 rounded-0 px-4 py-2 mb-4 mb-lg-0">
+                    <i class="fa-solid fa-play"></i> {{__('Vista de la unidad')}}
+                </a>
                 
             </div>
 

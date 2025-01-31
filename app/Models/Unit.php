@@ -10,12 +10,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Laravel\Nova\Actions\Actionable;
 
 
 #[ObservedBy([UnitObserver::class])]
 class Unit extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Actionable;
 
     /**
      * The paymentPlans that belong to the Unit

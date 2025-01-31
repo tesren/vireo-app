@@ -107,6 +107,8 @@ class Unit extends Resource
                 'Apartada' => 'warning',
             ])->sortable(),
 
+            Text::make('Video de Vista', 'youtube_link')->rules('max:255')->hideFromIndex()->placeholder('Pegue el enlace de YouTube'),
+
             //BelongsToMany::make('Planes de pago', 'paymentPlans', PaymentPlan::class),
 
             Tag::make('Planes de pago', 'paymentPlans', PaymentPlan::class)->hideFromIndex(),
