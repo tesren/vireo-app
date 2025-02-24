@@ -73,9 +73,12 @@
                     </div>
                 </h1>
 
-                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="btn btn-blurred fs-4 rounded-0 px-4 py-2 mb-4 mb-lg-0">
-                    <i class="fa-solid fa-play"></i> {{__('Vista de la unidad')}}
-                </a>
+                @isset($unit->youtube_link)
+                    <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="btn btn-blurred fs-4 rounded-0 px-4 py-2 mb-4 mb-lg-0">
+                        <i class="fa-solid fa-play"></i> {{__('Vista de la unidad')}}
+                    </a>
+                @endisset
+                
                 
             </div>
 
@@ -132,7 +135,7 @@
 
         <div class="col-12 col-lg-4 text-center align-self-center">
 
-            @if ($unit->status != 'Vendida')
+            @if ($unit->status != 'Vendida' and $unit->price != 0)
                 <div class="badge {{$status_class}} rounded-pill fw-light fs-6">
                     {{__($unit->status)}}
                 </div>
@@ -255,7 +258,7 @@
     <div class="row bg-green py-5 justify-content-evenly">
 
         {{-- Planes de pago --}}
-        @if( $unit->status != 'Vendida' )
+        @if( $unit->status != 'Vendida' and $unit->price != 0)
             <div class="col-12 col-lg-5 px-2 px-lg-0 order-2 order-lg-1">
 
                 

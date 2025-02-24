@@ -186,9 +186,11 @@
                             </div>
                         </div>
 
-                        <div class="fw-light fs-3 ff-forum">
-                            ${{ number_format($unit->price) }} {{$unit->currency}}
-                        </div>
+                        @if ( $unit->status != 'Vendida' and $unit->price != 0)
+                            <div class="fw-light fs-3 ff-forum">
+                                ${{ number_format($unit->price) }} {{$unit->currency}}
+                            </div>
+                        @endif
                     </div>
 
                     <div class="modal-footer">

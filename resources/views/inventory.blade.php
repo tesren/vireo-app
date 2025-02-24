@@ -99,10 +99,12 @@
                             {{__($unit->status)}}
                         </div>
                         
-                        <div class="position-absolute top-0 end-0 bg-blurred m-3 text-sand py-1 px-2 fs-5 border-gradient border-sand">
-                            <strong>${{ number_format($unit->price) }} </strong>
-                            <span class="fw-light">{{$unit->currency}}</span>
-                        </div>
+                        @if ( $unit->status != 'Vendida' and $unit->price != 0)
+                            <div class="position-absolute top-0 end-0 bg-blurred m-3 text-sand py-1 px-2 fs-5 border-gradient border-sand">
+                                <strong>${{ number_format($unit->price) }} </strong>
+                                <span class="fw-light">{{$unit->currency}}</span>
+                            </div>
+                        @endif
 
                         <img src="{{ $portrait }}" class="w-100" alt="{{$unit->unitType->property_type}} {{$unit->name}}" style="height: 300px; object-fit:cover;">
 
@@ -188,7 +190,7 @@
                             {{__($unit->status)}}
                         </div>
                         
-                        @if ( $unit->status != 'Vendida' )
+                        @if ( $unit->status != 'Vendida' and $unit->price != 0)
                             <div class="position-absolute top-0 end-0 bg-blurred m-3 text-sand py-1 px-2 fs-5 border-gradient border-sand">
                                 <strong>${{ number_format($unit->price) }} </strong>
                                 <span class="fw-light">{{$unit->currency}}</span>
