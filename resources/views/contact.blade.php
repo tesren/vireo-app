@@ -57,6 +57,17 @@
                 </div>
 
                 <div class="col-12">
+                    <label for="contact_method">{{__('¿Cómo le gustaría ser contactado?')}}</label>
+                    
+                    <select class="form-select mb-3" name="contact_method" id="contact_method" required>
+                        <option selected value="">{{__('Seleccione uno')}}</option>
+                        <option value="Email">{{__('Email')}}</option>
+                        <option value="Llamada">{{__('Llamada')}}</option>
+                        <option value="WhatsApp">{{__('WhatsApp')}}</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
                     <textarea name="message" id="message" cols="30" class="contact-input mb-4" rows="3" placeholder="{{__('Mensaje')}}">{{old('message')}}</textarea>
                 </div>
 

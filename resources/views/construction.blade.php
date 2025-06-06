@@ -58,7 +58,7 @@
 
                             <div class="col-12 text-center align-self-center">
                                 @if ($update->video_link)
-                                    <a href="#construction-{{$update->id}}-1" class="link-light" aria-label="Ver avance de obra de {{$date}}"><i class="fa-solid fa-4x fa-play"></i></a>
+                                    <a href="{{$update->video_link}}" data-fancybox="construction-{{$update->id}}" class="link-light" aria-label="Ver avance de obra de {{$date}}"><i class="fa-solid fa-4x fa-play"></i></a>
                                 @else
                                     <a href="#construction-{{$update->id}}-1" class="link-light text-decoration-none fs-1" aria-label="Ver avance de obra de {{$date}}"><i class="fa-regular fa-images"></i> {{count($images)}}</a>
                                 @endif
@@ -80,9 +80,7 @@
                         
                     </div>
     
-                    @if ($update->video_link)
-                        <a href="{{$update->video_link}}" data-fancybox="construction-{{$update->id}}" class="d-none">{{__('Video de avance de obra')}} Virēo Living - {{$date}}</a>
-                    @endif
+                    
     
                     @foreach ($images as $image)
                         <img src="{{$image->getUrl('large')}}" alt="Avance de Obra Virēo Living - {{$date}}" class="w-100 d-none" data-fancybox="construction-{{$update->id}}">

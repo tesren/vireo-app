@@ -21,6 +21,7 @@
         <p>Mensaje de: <strong>{{$msg->name}}</strong></p>
         <p>Correo: <strong>{{$msg->email}}</strong></p>
         <p>Telêfono: <strong>{{$msg->phone ?? 'Sin especificar'}}</strong></p>
+        <p>Preferencia de contacto: <strong>{{$msg->method ?? 'Sin especificar'}}</strong></p>
     
         @if ( isset($msg->contact_pref) )
             <p>Preferencia de contacto: {{$msg->contact_pref}}</p>

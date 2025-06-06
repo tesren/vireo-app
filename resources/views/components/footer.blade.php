@@ -22,12 +22,14 @@
         </div>
 
         <div class="col-10 col-lg-2 align-self-center mb-4 mb-lg-0">
-            <a href="https://domusvallarta.com" class="text-decoration-none link-sand">
-                <div class="text-center fs-6 mb-2">{{__('Comercializador Exclusivo')}}</div>
-                <img src="{{asset('img/domus-logo-white.svg')}}" alt="Logo de Domus Vallarta Inmobiliaria" class="w-100">
-            </a>
 
             @if ($contact != 'no')
+
+                <a href="https://domusvallarta.com" class="text-decoration-none link-sand">
+                    <div class="text-center fs-6 mb-2">{{__('Comercializador Exclusivo')}}</div>
+                    <img src="{{asset('img/domus-logo-white.svg')}}" alt="Logo de Domus Vallarta Inmobiliaria" class="w-100">
+                </a>
+
                 <div class="d-flex justify-content-center mt-3">
                     <a href="https://www.instagram.com/vireo.living/" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-sand me-3 fs-4">
                         <i class="fa-brands fa-instagram"></i>
