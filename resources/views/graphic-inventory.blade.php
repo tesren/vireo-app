@@ -41,62 +41,10 @@
         <a href="{{route('inventory', request()->query() )}}" class="btn btn-outline-green rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
     </div>
 
-    {{-- Torre A --}}
-    <h2 class="container">{{__('Torre')}} A</h2>
-
-    <div class="container position-relative mb-5 px-2 px-lg-0">
-
-        <img src="{{asset('img/torre-a.png')}}" alt="Torre A - Virēo Living" class="w-100">
-
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-2 px-lg-0" viewBox="0 0 1597 294">
-
-            
-            {{-- Lounge Lobby --}}
-            <rect class="lobby-shape" x="645" y="97" height="200" width="210"></rect>
-            
-            <text x="670" y="200" font-size="26" font-weight="bold" fill="#5B5942" class="fw-light">
-
-                <tspan class="text-decoration-underline">
-                    {{__('Golf Lounge')}}
-                </tspan>
-                
-            </text>
-            
-
-            @foreach ($towerA_units as $unit )
-
-                <a href="#unit-modal-{{$unit->id}}" data-bs-toggle="modal" data-bs-target="#unit-modal-{{$unit->id}}" class="unit-square text-decoration-none position-relative">
-                    
-                    <rect class="unit-{{strtolower($unit->status)}}" x="{{ $unit->shape->rect_x ?? '0' }}" y="{{ $unit->shape->rect_y ?? '0' }}" height="{{ $unit->shape->height ?? '0' }}" width="{{ $unit->shape->width ?? '0'}}"></rect>
-                    
-                    <text x="{{$unit->shape->text_x ?? 0;}}"
-                        y="{{$unit->shape->text_y ?? 0; }}"
-                        font-size="24" font-weight="bold" fill="#fff" class="fw-light">
-
-                        <tspan class="text-decoration-underline">{{$unit->name}}</tspan>
-
-                        @php
-                            $type_x = ($unit->shape->text_x ?? 0) - 25;
-                        @endphp
-
-                        <tspan x="{{$type_x}}" dy="1.3em" font-size="16" font-weight="light">
-                            {{ $unit->unitType->bedrooms }}
-                            @if($unit->unitType->flexrooms > 0).5 @endif
-                            {{__('REC')}}
-                            + {{ $unit->unitType->bathrooms }} {{__('BA')}}
-                        </tspan>
-                        
-                    </text>
-                    
-                </a>
-            @endforeach
-        </svg>
-
-    </div>
 
     {{-- Torre B --}}
-    <h2 class="container">{{__('Torre')}} B</h2>
-    <div class="container position-relative mb-6 px-2 px-lg-0">
+    <h2 class="container">{{__('Torre')}} B - {{__('Albercas y área común')}}</h2>
+    <div class="container position-relative mb-5 px-2 px-lg-0">
 
         <img src="{{asset('img/torre-b.png')}}" alt="Torre A - Virēo Living" class="w-100">
 
@@ -145,6 +93,59 @@
                     
                 </a>
 
+            @endforeach
+        </svg>
+
+    </div>
+
+    {{-- Torre A --}}
+    <h2 class="container">{{__('Torre')}} A - {{__('Campo de Golf')}}</h2>
+
+    <div class="container position-relative mb-6 px-2 px-lg-0">
+
+        <img src="{{asset('img/torre-a.png')}}" alt="Torre A - Virēo Living" class="w-100">
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-2 px-lg-0" viewBox="0 0 1597 294">
+
+            
+            {{-- Lounge Lobby --}}
+            <rect class="lobby-shape" x="645" y="97" height="200" width="210"></rect>
+            
+            <text x="670" y="200" font-size="26" font-weight="bold" fill="#5B5942" class="fw-light">
+
+                <tspan class="text-decoration-underline">
+                    {{__('Golf Lounge')}}
+                </tspan>
+                
+            </text>
+            
+
+            @foreach ($towerA_units as $unit )
+
+                <a href="#unit-modal-{{$unit->id}}" data-bs-toggle="modal" data-bs-target="#unit-modal-{{$unit->id}}" class="unit-square text-decoration-none position-relative">
+                    
+                    <rect class="unit-{{strtolower($unit->status)}}" x="{{ $unit->shape->rect_x ?? '0' }}" y="{{ $unit->shape->rect_y ?? '0' }}" height="{{ $unit->shape->height ?? '0' }}" width="{{ $unit->shape->width ?? '0'}}"></rect>
+                    
+                    <text x="{{$unit->shape->text_x ?? 0;}}"
+                        y="{{$unit->shape->text_y ?? 0; }}"
+                        font-size="24" font-weight="bold" fill="#fff" class="fw-light">
+
+                        <tspan class="text-decoration-underline">{{$unit->name}}</tspan>
+
+                        @php
+                            $type_x = ($unit->shape->text_x ?? 0) - 25;
+                        @endphp
+
+                        <tspan x="{{$type_x}}" dy="1.3em" font-size="16" font-weight="light">
+                            {{ $unit->unitType->bedrooms }}
+                            @if($unit->unitType->flexrooms > 0).5 @endif
+                            {{__('REC')}}
+                            + {{ $unit->unitType->bathrooms }} {{__('BA')}}
+                        </tspan>
+                        
+                    </text>
+                    
+                </a>
             @endforeach
         </svg>
 
