@@ -10,7 +10,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 document.addEventListener("DOMContentLoaded", function() {
     var whatsappLink = document.getElementById('whatsapp');
 
-    if(whatsappLink){
+    if(whatsappLink && window.innerWidth > 992) {
         var tooltip = new bootstrap.Tooltip(whatsappLink, {
             trigger: 'manual', // Activamos el tooltip manualmente
             placement: 'left' // Colocación del tooltip

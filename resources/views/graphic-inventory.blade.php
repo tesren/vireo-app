@@ -43,8 +43,8 @@
 
 
     {{-- Torre B --}}
-    <h2 class="container">{{__('Torre')}} B - {{__('Albercas y área común')}}</h2>
-    <div class="container position-relative mb-5 px-2 px-lg-0">
+    <h2 class="container">{{__('Torre')}} B</h2>
+    <div class="container position-relative mb-6 px-2 px-lg-0">
 
         <img src="{{asset('img/torre-b.png')}}" alt="Torre A - Virēo Living" class="w-100">
 
@@ -96,10 +96,12 @@
             @endforeach
         </svg>
 
+        <div class="mt-4 fs-2 ff-forum">{{__('Albercas y área común')}}</div>
+
     </div>
 
     {{-- Torre A --}}
-    <h2 class="container">{{__('Torre')}} A - {{__('Campo de Golf')}}</h2>
+    <h2 class="container">{{__('Torre')}} A</h2>
 
     <div class="container position-relative mb-6 px-2 px-lg-0">
 
@@ -148,6 +150,8 @@
                 </a>
             @endforeach
         </svg>
+
+        <div class="mt-4 fs-2 ff-forum">{{__('Campo de Golf')}}</div>
 
     </div>
 
