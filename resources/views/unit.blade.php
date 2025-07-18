@@ -308,24 +308,28 @@
                                 }else{
                                     $final_price = $unit->price;
                                 }
+
+                                $today = \Carbon\Carbon::now();
+
+                                if($plan->delivery_date){
+                                    $delivery_date = \Carbon\Carbon::parse($plan->delivery_date);
+                                    $months_till_delivery = $today->diffInMonths($delivery_date);
+                                }
+                                else{
+                                    $months_till_delivery = $plan->months_amount ?? 0;
+                                }
+
                             @endphp 
         
                             <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
                                 
-                                <div class="py-4 bg-blue text-center">
-                                    <div>{{__('Precio Final')}}</div>
-                                    <div class="fs-2">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                <div class="py-3 bg-blue text-center">
+                                    <div>{{__('Precio de lista')}}</div>
+                                    <div class="fs-3">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
                                 </div>
         
                                 @isset($plan->discount)
                                     <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">{{__('Precio de lista')}}</div>
-                                        <div class="text-decoration-line-through fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
-                                    </div>
-                                @endisset
-        
-                                @isset($plan->discount)
-                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">{{__('Descuento')}} ({{$plan->discount}}%)</div>
                                         <div class="fs-4">${{ number_format( $unit->price * ($plan->discount/100) ) }} {{ $unit->currency }}</div>
                                     </div>
@@ -356,12 +360,20 @@
                                 @isset($plan->months_percent)
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">
-                                            {{$plan->months_amount}} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
+                                            {{ $months_till_delivery == 0 ? '' : $months_till_delivery }} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
                                             @if ($plan->during_const)
-                                                <div class="fs-7 fw-light d-none d-lg-block">{{$plan->months_amount}} {{__('Pagos mensuales durante la construcción')}}.</div>
+                                                <div class="fs-7 fw-light d-none d-lg-block">{{__('Pagos mensuales durante la construcción')}}.</div>
                                             @endif
                                         </div>
-                                        <div class="fs-4">${{ number_format( $final_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4 text-end">
+                                            ${{ number_format( $final_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}
+                                            @if($months_till_delivery > 1)
+                                                @php
+                                                    $each_month_amount = ($final_price * ($plan->months_percent/100)) / $months_till_delivery;
+                                                @endphp
+                                                <div class="fs-7 fw-light d-none d-lg-block">{{ $months_till_delivery }} {{__('Pagos de') }} ${{ number_format($each_month_amount) }} {{ $unit->currency }} {{__('cada uno')}}.</div>
+                                            @endif
+                                        </div>
                                     </div>
                                 @endisset
         
@@ -374,6 +386,11 @@
                                         <div class="fs-4">${{ number_format( $final_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
+
+                                <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-bold">
+                                    <div class="fs-4">{{__('Precio final')}}</div>
+                                    <div class="fs-4">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                </div>
         
                             </div>
         

@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
@@ -101,6 +102,10 @@ class PaymentPlan extends Resource
             Number::make('Pagos Mensuales', 'months_amount')->min(0)->max(200)->hideFromIndex()->help('Ingresa la cantidad de meses'),
 
             Boolean::make('Durante la Construcción', 'during_const')->default(0)->nullable()->hideFromIndex(),
+
+            Date::make('Fecha de entrega', 'delivery_date')->sortable()->rules('nullable', 'date')->resolveUsing( function($value){
+                    return $value;
+                }),
 
             Number::make('Pago final', 'closing_payment')->min(0)->max(100)->placeholder('Porcentaje del Pago final')->rules('required')->sortable()->displayUsing(
                 function($value){
