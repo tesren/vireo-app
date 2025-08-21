@@ -357,6 +357,10 @@ body{
     stroke-width: 1px;
 }
 
+.fs-plans{
+    font-size: 1.5rem !important
+}
+
 
 @media (max-width: 992px) {
     .mt-6{
@@ -384,6 +388,10 @@ body{
     .bg-nav-blurred{
         background-color: var(--green);
         backdrop-filter: unset !important;
+    }
+
+    .fs-plans{
+        font-size: 1.2rem !important
     }
 
 }

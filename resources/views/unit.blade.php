@@ -297,7 +297,7 @@
         
                     <div class="tab-content position-relative" id="pills-tabContent">
 
-                        <img src="{{ asset('img/background-plans.webp') }}" alt="" class="w-100 position-absolute end-0 bottom-0" style="height:120%; z-index:1; opacity:0.2;">
+                        <img src="{{ asset('img/background-plans.webp') }}" alt="" class="w-100 position-absolute end-0 bottom-0" style="height:120%; z-index:1; opacity:0.3;">
 
                         @php $i = 0; @endphp
                         @foreach ($unit->paymentPlans as $plan)
@@ -321,7 +321,7 @@
 
                             @endphp 
         
-                            <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
+                            <div class="tab-pane position-relative pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0" style="z-index: 2;">
                                 
                                 <div class="py-3 bg-blue text-center">
                                     <div>{{__('Precio de lista')}}</div>
@@ -330,66 +330,72 @@
         
                                 @isset($plan->discount)
                                     <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">{{__('Descuento')}} ({{$plan->discount}}%)</div>
-                                        <div class="fs-4">${{ number_format( $unit->price * ($plan->discount/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-plans">{{__('Descuento')}} ({{$plan->discount}}%)</div>
+                                        <div class="fs-plans">${{ number_format( $unit->price * ($plan->discount/100) ) }} {{ $unit->currency }}</div>
                                     </div>
 
                                     <hr class="green-hr">
                                 @endisset
         
                                 @isset($plan->down_payment)
-                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">
+                                    <div class="row justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-plans col-6 px-0">
                                             {{__('Enganche')}} ({{$plan->down_payment}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $final_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-plans col-6 text-end px-0">${{ number_format( $final_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-7 fw-light col-12 px-0">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
                                     </div>
                                 @endisset
         
                                 @isset($plan->second_payment)
-                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">
+                                    <div class="row justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-plans col-7 px-0">
                                             {{__('Segundo pago')}} ({{$plan->second_payment}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{__('Sesenta días después del enganche')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $final_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-plans col-5 px-0 text-end">${{ number_format( $final_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-7 fw-light col-12 px-0">{{__('Sesenta días después del enganche')}}.</div>
                                     </div>
                                 @endisset
                                 
                                 @isset($plan->months_percent)
-                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">
+                                    <div class="row justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-plans col-6 px-0">
                                             {{ $months_till_delivery == 0 ? '' : $months_till_delivery }} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
-                                            @if ($plan->during_const)
-                                                <div class="fs-7 fw-light d-none d-lg-block">{{__('Pagos mensuales durante la construcción')}}.</div>
-                                            @endif
                                         </div>
-                                        <div class="fs-4 text-end">
+
+                                        <div class="fs-plans text-end col-6 px-0">
                                             ${{ number_format( $final_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}
+                                        </div>
+
+                                        <div class="fs-7 fw-light col-12 px-0">
+                                            @if ($plan->during_const)
+                                                {{__('Pagos mensuales durante la construcción')}}.
+                                            @endif
+
                                             @if($months_till_delivery > 1)
                                                 @php
                                                     $each_month_amount = ($final_price * ($plan->months_percent/100)) / $months_till_delivery;
                                                 @endphp
-                                                <div class="fs-7 fw-light d-none d-lg-block">{{ $months_till_delivery }} {{__('Pagos de') }} ${{ number_format($each_month_amount) }} {{ $unit->currency }} {{__('cada uno')}}.</div>
+                                                <span class="ms-1">{{ $months_till_delivery }} {{__('Pagos de') }} ${{ number_format($each_month_amount) }} {{ $unit->currency }} {{__('cada uno')}}.</span>
                                             @endif
                                         </div>
+
                                     </div>
                                 @endisset
         
                                 @isset($plan->closing_payment)
-                                    <div class="d-flex justify-content-between px-2 px-lg-4 fw-light">
-                                        <div class="fs-4">
+                                    <div class="row justify-content-between px-2 px-lg-4 fw-light">
+                                        <div class="fs-plans col-6 px-0">
                                             {{__('Pago Final')}} ({{$plan->closing_payment}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{__('A la entrega física de la propiedad')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $final_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-plans col-6 text-end px-0">${{ number_format( $final_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-7 fw-light col-12 px-0">{{__('A la entrega física de la propiedad')}}.</div>
                                     </div>
                                 @endisset
 
                                 <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-bold">
-                                    <div class="fs-4">{{__('Precio final')}}</div>
-                                    <div class="fs-4">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                    <div class="fs-plans">{{__('Precio final')}}</div>
+                                    <div class="fs-plans">${{ number_format($final_price) }} {{ $unit->currency }}</div>
                                 </div>
         
                             </div>
@@ -401,15 +407,15 @@
                 
                 <div class="bg-green mt-2">
                     <ul class="fs-7 fw-light">
-                        <li>
+                        <li class="mb-1">
                             {{__('El contrato de promesa de compra-venta tendrá que firmarse en un plazo máximo de diez días a partir de la firma de la solicitud de compra.')}}
                         </li>
 
-                        <li>
+                        <li class="mb-1">
                             {{__('En caso de no proceder con la compra de la unidad en el tiempo establecido (firma de contrato y pago de enganche), la unidad quedará disponible.')}}
                         </li>
 
-                        <li>{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</li>
+                        <li class="mb-1">{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</li>
                     </ul>
                 </div>
 
