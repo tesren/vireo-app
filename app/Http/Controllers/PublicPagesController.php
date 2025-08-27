@@ -175,23 +175,23 @@ class PublicPagesController extends Controller
         }
 
         if( !isset($max_price) or empty($max_price) ){
-            $max_price = 999999999;
+            $max_price = 99999999999;
         }
 
-        $units = Unit::where('price', '>', $min_price)->where('price', '<', $max_price);
+        $units = Unit::where('price', '>=', $min_price)->where('price', '<=', $max_price)->where('status', '!=', 'Vendida');
 
         if( isset($bedrooms) and !empty($bedrooms) ){
             switch ($bedrooms) {
                 case 1:
-                    $type_ids = [4];
+                    $type_ids = [4,8];
                     break;
 
                 case 2:
-                    $type_ids = [1];
+                    $type_ids = [1,7];
                     break;
 
                 case 3:
-                    $type_ids = [2];
+                    $type_ids = [2,6];
                     break;
 
                 case 4:
@@ -199,7 +199,7 @@ class PublicPagesController extends Controller
                     break;
                 
                 default:
-                    $type_ids = [1,2,3,4];
+                    $type_ids = [1,2,3,4,6,7,8];
                     break;
             }
 
@@ -213,7 +213,7 @@ class PublicPagesController extends Controller
                     break;
 
                 case 'Condominio':
-                    $ptype_ids = [1,2,4];
+                    $ptype_ids = [1,2,4,6,7,8];
                     break;
                 
                 default:
