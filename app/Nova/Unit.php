@@ -34,7 +34,7 @@ class Unit extends Resource
     public static $model = \App\Models\Unit::class;
 
     public function title(){
-        return 'Unidad '.$this->name;
+        return 'Unidad '.$this->name.' Torre '.$this->tower_name;
     }
 
     /**

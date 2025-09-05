@@ -307,41 +307,38 @@ body{
 }
 
 .unit-disponible{
-    fill: #27A442;
-    mix-blend-mode: multiply;
-    stroke: #1e7e32;
+    fill: rgba(39, 164, 66, 0.3);
+    stroke: white;
     stroke-width: 1px;
     transition: 0.2s;
 }
 
 .unit-square:hover .unit-disponible{
-    fill: #1e7e32 ;
+    fill: rgba(39, 164, 66, 0.9);
     transition: 0.3s;
 }
 
 .unit-apartada{
-    fill: #E5D21C;
-    stroke: #c0ae0c;
+    fill: rgba(229, 210, 28, 0.4);
+    stroke: white;
     stroke-width: 1px;
-    mix-blend-mode: multiply;
     transition: 0.2s;
 }
 
 .unit-square:hover .unit-apartada{
-    fill: #c0ae0c;
+    fill: rgba(229, 210, 28, 0.9);
     transition: 0.3s;
 }
 
 .unit-vendida{
-    fill: #FF6363;
-    stroke: #dc3545;
+    fill: rgba(223, 52, 52, 0.6);
+    stroke: white;
     stroke-width: 1px;
-    mix-blend-mode: multiply;
     transition: 0.2s;
 }
 
 .unit-square:hover .unit-vendida{
-    fill: #dc3545;
+    fill: rgba(223, 52, 52, 0.9);
     transition: 0.3s;
 }
 
@@ -359,6 +356,15 @@ body{
 
 .fs-plans{
     font-size: 1.5rem !important
+}
+
+.svg-container{
+    overflow-x: hidden;    
+}
+
+.svg-container img, .svg-container svg{
+    width: 100%;
+    overflow-x: scroll;
 }
 
 
@@ -392,6 +398,16 @@ body{
 
     .fs-plans{
         font-size: 1.2rem !important
+    }
+
+    .svg-container{
+        overflow-x: scroll;    
+    }
+
+    .svg-container img, .svg-container svg{
+        width: 200%;
+        overflow-x: scroll !important;
+
     }
 
 }

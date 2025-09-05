@@ -64,7 +64,7 @@ class Shape extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Unidad', 'unit', Unit::class)->withoutTrashed()->rules('required')->sortable(),
+            BelongsTo::make('Unidad', 'unit', Unit::class)->withoutTrashed()->rules('required')->sortable()->searchable(),
 
             Select::make('Tipo de forma', 'form_type')->options([
                 'polygon' => 'Polígono',
