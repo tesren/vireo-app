@@ -429,23 +429,26 @@
             <div class="position-relative mb-5">
 
                 @if ($unit->tower_name == 'A')
-                    <img src="{{asset('/img/tower-a-numbers.png')}}" alt="Torre A - Virēo Living" class="w-100">
+                    <img src="{{asset('img/torre-a.jpg')}}" alt="Torre A - Virēo Living" class="rounded-3 shadow w-100">
                 @elseif ($unit->tower_name == 'B')
-                    <img src="{{asset('/img/tower-b-numbers.png')}}" alt="Torre B - Virēo Living" class="w-100"> 
+                    <img src="{{asset('img/torre-b.jpg')}}" alt="Torre A - Virēo Living" class=" rounded-3 shadow w-100">
                 @endif
 
 
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0" viewBox="0 0 1597 294">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0" viewBox="{{ $unit->tower_name == 'A' ? '0 0 460.8 259.2' : '0 0 1920 991' }}">
                     
-                    {{-- unidad marcada --}}
-                    <rect class="unit-sand" x="{{ $unit->shape->rect_x ?? '0' }}" y="{{ $unit->shape->rect_y ?? '0' }}" height="{{ $unit->shape->height ?? '0' }}" width="{{ $unit->shape->width ?? '0'}}"></rect>
-                            
+                    @if (isset($unit->shape->form_type) && $unit->shape->form_type == 'polygon')
+                        <polygon class="unit-{{strtolower($unit->status)}}" points="{{$unit->shape->points ?? ''}}"></polygon>
+                    @else
+                        <rect class="unit-{{strtolower($unit->status)}}" x="{{ $unit->shape->rect_x ?? '0' }}" y="{{ $unit->shape->rect_y ?? '0' }}" height="{{ $unit->shape->height ?? '0' }}" width="{{ $unit->shape->width ?? '0'}}"></rect>
+                    @endif
+                    
                     <text x="{{$unit->shape->text_x ?? 0;}}"
-                        y="{{($unit->shape->text_y + 10) ?? 0; }}"
-                        font-size="36" font-weight="bold" fill="#5B5942" class="fw-light">
+                        y="{{$unit->shape->text_y ?? 0; }}"
+                        font-size="{{ $unit->tower_name == 'A' ? '6' : '18' }}" font-weight="bold" fill="#fff" class="fw-light">
 
                         <tspan class="text-decoration-underline">{{$unit->name}}</tspan>
-
+                        
                     </text>
 
                 </svg>
@@ -455,21 +458,21 @@
             <p class="fs-6 mb-4">{{__('Disfruta de las amenidades exclusivas, que incluyen terraza pergolada, alberca de adultos y niños, pista de jogging, golf lounge y lobby. Además de las amenidades de primer nivel que ofrece la membresía social de El Tigre Golf & Country Club, así como acceso al club de playa.')}}</p>
 
             <div class="row justify-content-evenly text-center fs-5 fw-light">
-                <div class="col-6 col-lg-4 mb-3">
+                <div class="col-6 col-lg-3 mb-3">
                     <i class="fa-solid fa-water-ladder"></i> {{__('Alberca')}}
                 </div>
-                <div class="col-6 col-lg-4 mb-3">
+                <div class="col-6 col-lg-3 mb-3">
                     <i class="fa-solid fa-golf-ball-tee"></i> {{__('Golf Lounge')}}
                 </div>
-                <div class="col-6 col-lg-4 mb-3">
+                <div class="col-6 col-lg-3 mb-3">
                     <i class="fa-solid fa-person-running"></i> {{__('Pista de Jogging')}}
                 </div>
-                <div class="col-6 col-lg-4 mb-3">
+                <div class="col-6 col-lg-3 mb-3">
                     <i class="fa-solid fa-bell-concierge"></i> {{__('Lobby Principal')}}
                 </div>
-                <div class="col-12 col-lg-5 mb-3">
+                {{-- <div class="col-12 col-lg-5 mb-3">
                     <i class="fa-solid fa-people-roof"></i> {{__('Terraza pergolada')}}
-                </div>
+                </div> --}}
             </div>
 
         </div>
