@@ -258,7 +258,7 @@
     <div class="row bg-green py-5 justify-content-evenly">
 
         {{-- Planes de pago --}}
-        @if( $unit->status != 'Vendida' and $unit->price != 0)
+        @if( $unit->status == 'Disponible' and $unit->price != 0)
             <div class="col-12 col-lg-5 px-2 px-lg-0 order-2 order-lg-1">
 
                 

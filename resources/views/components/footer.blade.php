@@ -15,7 +15,7 @@
                 <h6 class="fs-3">{{__('Contacto')}}</h6>
 
                 <a href="mailto:info@domusvallarta.com" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
-                <a href="tel:+523322005523" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> 332 200 5523</a>
+                <a href="tel:+52{{env('CONTACT_NUMBER')}}" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> {{env('DISPLAY_NUMBER')}}</a>
             @endif
 
             <address class="fs-5"><i class="fa-solid fa-location-dot"></i> P.º de las Garzas 291, El Tigre, 63735 Nuevo Vallarta, Nay.</address>
