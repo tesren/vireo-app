@@ -14,8 +14,12 @@
             @if ($contact != 'no')
                 <h6 class="fs-3">{{__('Contacto')}}</h6>
 
+                @php
+                    $formatted_phone = preg_replace('/(\d{3})(\d{3})(\d{4})/', '$1 $2 $3', config('domus.phone_number') );
+                @endphp
+
                 <a href="mailto:info@domusvallarta.com" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
-                <a href="tel:+52{{env('CONTACT_NUMBER')}}" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> {{env('DISPLAY_NUMBER')}}</a>
+                <a href="tel:+52{{config('domus.phone_number')}}" class="link-sand text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> +52 {{$formatted_phone}}</a>
             @endif
 
             <address class="fs-5"><i class="fa-solid fa-location-dot"></i> P.º de las Garzas 291, El Tigre, 63735 Nuevo Vallarta, Nay.</address>

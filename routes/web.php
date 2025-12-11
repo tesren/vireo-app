@@ -44,5 +44,6 @@ Route::post('/send-message', [ PublicPagesController::class, 'sendMail'])->name(
 
 Route::get('/vireo-optimize', function() {
     Artisan::call('optimize');
+    Artisan::call('view:cache');
     return ('Optimizado');
 });
